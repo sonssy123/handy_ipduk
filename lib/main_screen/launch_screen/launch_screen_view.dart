@@ -1,71 +1,82 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:handy_ipduk/main_screen/launch_screen/animated_word.dart';
 import 'package:handy_ipduk/main_screen/login_screen/login_screen_view.dart';
 
 class MainLaunchScreenView extends StatefulWidget {
-  const MainLaunchScreenView({super.key});
+  const MainLaunchScreenView({Key? key}) : super(key: key);
 
   @override
   State<MainLaunchScreenView> createState() => _MainLaunchScreenViewState();
 }
 
-class _MainLaunchScreenViewState extends State<MainLaunchScreenView> {
+class _MainLaunchScreenViewState extends State<MainLaunchScreenView>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
+  final List<String> _alphabets = ['i', 'p', 'd', 'u', 'k'];
+  final List<Animation<double>> _alphabetAnimations = [];
+
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(milliseconds: 10000), () {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => const MainLoginScreenView()));
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 3000),
+    );
+
+    // ipduk 애니메이션 초기화
+    for (int i = 0; i < _alphabets.length; i++) {
+      _alphabetAnimations.add(
+        Tween<double>(begin: 0.0, end: 1.0).animate(
+          CurvedAnimation(
+            parent: _controller,
+            curve:
+                Interval(i / _alphabets.length, 1.0, curve: Curves.easeInOut),
+          ),
+        ),
+      );
+    }
+
+    _controller.forward();
+
+    // MainLoginScreenView 이동
+    Timer(const Duration(milliseconds: 6000), () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const MainLoginScreenView()),
+      );
     });
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
-        backgroundColor: Color.fromARGB(255, 255, 216, 253),
+        backgroundColor: Colors.black,
         body: Stack(
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.home, size: 100, color: Colors.black),
-                    SizedBox(width: 20),
-                    Text(
-                      'ipduk',
-                      style: TextStyle(fontSize: 50, color: Colors.black),
-                    ),
-                  ],
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  _alphabets.length,
+                  (index) => AnimatedWord(
+                    animation: _alphabetAnimations[index],
+                    alphabet: _alphabets[index],
+                  ),
                 ),
-                Text(
-                  'ipduk@hhhh.com',
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                ),
-              ],
+              ),
             ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class LaunchButton extends StatelessWidget {
-  const LaunchButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const MainLoginScreenView()),
-        );
-      },
-      child: const Text('Login 화면으로 이동'),
     );
   }
 }
