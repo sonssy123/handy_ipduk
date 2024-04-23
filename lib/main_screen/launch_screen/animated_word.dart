@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:handy_ipduk/presentation/extenstions/color_extension.dart';
 
 class AnimatedWord extends StatelessWidget {
   final Animation<double> animation;
@@ -15,22 +16,22 @@ class AnimatedWord extends StatelessWidget {
     Color color;
     switch (alphabet) {
       case 'i':
-        color = Colors.red;
+        color = ColorExtension.accentColor;
         break;
       case 'p':
-        color = Colors.red;
+        color = ColorExtension.accentColor;
         break;
       case 'd':
-        color = const Color.fromARGB(255, 0, 255, 170);
+        color = ColorExtension.accentColor;
         break;
       case 'u':
-        color = const Color.fromARGB(255, 0, 255, 170);
+        color = ColorExtension.accentColor;
         break;
       case 'k':
-        color = const Color.fromARGB(255, 0, 255, 170);
+        color = ColorExtension.accentColor;
         break;
       default:
-        color = const Color.fromARGB(255, 0, 255, 170);
+        color = ColorExtension.accentColor;
         break;
     }
 

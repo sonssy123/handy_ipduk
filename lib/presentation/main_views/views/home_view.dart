@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:handy_ipduk/presentation/main_views/sub_views/home/advertisement/home_advertisement_view.dart';
+import 'package:handy_ipduk/presentation/main_views/sub_views/home/artist_output_screen/artist_output_screen.dart';
 import 'package:handy_ipduk/presentation/main_views/views/calendar_view.dart';
 import 'package:handy_ipduk/presentation/main_views/sub_views/home/artist_main/artist_main_view.dart';
 import 'package:handy_ipduk/presentation/main_views/sub_views/home/my_artist/my_artist_view.dart';
+import 'package:handy_ipduk/presentation/utils/size_converter.dart';
 
 class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+  const HomeView({Key? key}) : super(key: key);
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -16,16 +19,31 @@ class _HomeViewState extends State<HomeView> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Home 화면'),
+          title: const Text('IPDUK'),
+          centerTitle: true,
+          automaticallyImplyLeading: false,
         ),
         body: Stack(
           children: [
             SingleChildScrollView(
               child: Column(
                 children: [
-                  const MyArtistButton(),
-                  const ArtistMainButton(),
-                  const CalendarButton(),
+                  SizedBox(
+                    height: SizeConverter.getHeight(context, 20),
+                  ),
+                  Container(
+                    constraints: BoxConstraints(
+                      maxHeight: SizeConverter.getHeight(context, 301),
+                    ),
+                    child: const HomeAdvertisementView(),
+                  ),
+                  SizedBox(height: SizeConverter.getHeight(context, 100)),
+                  Container(
+                    constraints: BoxConstraints(
+                      maxHeight: SizeConverter.getHeight(context, 301),
+                    ),
+                    child: const ArtistOutputScreen(),
+                  ),
                 ],
               ),
             ),

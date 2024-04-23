@@ -22,17 +22,21 @@ class _MainLaunchScreenViewState extends State<MainLaunchScreenView>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 3000),
+      duration: const Duration(milliseconds: 4000),
     );
 
     // ipduk 애니메이션 초기화
+    final double intervalStep = 1.0 / _alphabets.length;
     for (int i = 0; i < _alphabets.length; i++) {
       _alphabetAnimations.add(
         Tween<double>(begin: 0.0, end: 1.0).animate(
           CurvedAnimation(
             parent: _controller,
-            curve:
-                Interval(i / _alphabets.length, 1.0, curve: Curves.easeInOut),
+            curve: Interval(
+              i * intervalStep,
+              (i + 1) * intervalStep,
+              curve: Curves.easeInOut,
+            ),
           ),
         ),
       );
