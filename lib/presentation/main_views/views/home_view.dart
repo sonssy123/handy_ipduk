@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:handy_ipduk/presentation/main_views/sub_views/home/advertisement/home_advertisement_view.dart';
+import 'package:handy_ipduk/presentation/main_views/sub_views/home/advertisement/home_advertisement.dart';
 import 'package:handy_ipduk/presentation/main_views/sub_views/home/artist_output_screen/artist_output_screen.dart';
+import 'package:handy_ipduk/presentation/main_views/sub_views/home/calendar_connect/calendar_connect.dart';
+import 'package:handy_ipduk/presentation/main_views/sub_views/home/pictorial_post/pictorial_post_one.dart';
+import 'package:handy_ipduk/presentation/main_views/sub_views/home/pictorial_post/pictorial_post_three.dart';
+import 'package:handy_ipduk/presentation/main_views/sub_views/home/pictorial_post/pictorial_post_two.dart';
 import 'package:handy_ipduk/presentation/main_views/views/calendar_view.dart';
 import 'package:handy_ipduk/presentation/main_views/sub_views/home/artist_main/artist_main_view.dart';
 import 'package:handy_ipduk/presentation/main_views/sub_views/home/my_artist/my_artist_view.dart';
@@ -28,22 +32,49 @@ class _HomeViewState extends State<HomeView> {
             SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(
-                    height: SizeConverter.getHeight(context, 20),
-                  ),
+                  SizedBox(height: SizeConverter.getHeight(context, 20)),
                   Container(
                     constraints: BoxConstraints(
                       maxHeight: SizeConverter.getHeight(context, 301),
                     ),
-                    child: const HomeAdvertisementView(),
+                    child: const HomeAdvertisement(),
                   ),
-                  SizedBox(height: SizeConverter.getHeight(context, 100)),
+                  SizedBox(height: SizeConverter.getHeight(context, 35)),
                   Container(
                     constraints: BoxConstraints(
                       maxHeight: SizeConverter.getHeight(context, 301),
                     ),
                     child: const ArtistOutputScreen(),
                   ),
+                  SizedBox(height: SizeConverter.getHeight(context, 150)),
+                  Container(
+                    constraints: BoxConstraints(
+                      maxHeight: SizeConverter.getHeight(context, 201),
+                    ),
+                    child: const CalendarConnect(),
+                  ),
+                  SizedBox(height: SizeConverter.getHeight(context, 150)),
+                  Container(
+                    constraints: BoxConstraints(
+                      maxHeight: SizeConverter.getHeight(context, 790),
+                    ),
+                    child: const PictorialPostOne(),
+                  ),
+                  SizedBox(height: SizeConverter.getHeight(context, 200)),
+                  Container(
+                    constraints: BoxConstraints(
+                      maxHeight: SizeConverter.getHeight(context, 790),
+                    ),
+                    child: const PictorialPostTwo(),
+                  ),
+                  SizedBox(height: SizeConverter.getHeight(context, 200)),
+                  Container(
+                    constraints: BoxConstraints(
+                      maxHeight: SizeConverter.getHeight(context, 790),
+                    ),
+                    child: const PictorialPostThree(),
+                  ),
+                  SizedBox(height: SizeConverter.getHeight(context, 20)),
                 ],
               ),
             ),

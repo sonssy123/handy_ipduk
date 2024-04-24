@@ -34,7 +34,7 @@ class _ArtistOutputScreenState extends State<ArtistOutputScreen> {
                                 '나의 아티스트',
                                 style: TextStyle(
                                   fontSize: 25,
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -53,7 +53,7 @@ class _ArtistOutputScreenState extends State<ArtistOutputScreen> {
                                 },
                                 icon: const Icon(
                                   Icons.add,
-                                  color: Colors.black,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
@@ -70,7 +70,7 @@ class _ArtistOutputScreenState extends State<ArtistOutputScreen> {
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(
-                                color: Colors.black,
+                                color: Colors.white,
                                 width: 2,
                               ),
                             ),
@@ -87,7 +87,7 @@ class _ArtistOutputScreenState extends State<ArtistOutputScreen> {
                             decoration: BoxDecoration(
                               color: Colors.transparent,
                               border: Border.all(
-                                color: Colors.black,
+                                color: Colors.white,
                                 width: 2,
                               ),
                             ),

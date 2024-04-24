@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:handy_ipduk/presentation/main_views/sub_views/home/image/home_advertisement_image.dart';
 import 'package:handy_ipduk/presentation/utils/size_converter.dart';
 
-class HomeAdvertisementView extends StatefulWidget {
-  const HomeAdvertisementView({Key? key}) : super(key: key);
+class HomeAdvertisement extends StatefulWidget {
+  const HomeAdvertisement({Key? key}) : super(key: key);
 
   @override
-  State<HomeAdvertisementView> createState() => _HomeAdvertisementViewState();
+  State<HomeAdvertisement> createState() => _HomeAdvertisementState();
 }
 
-class _HomeAdvertisementViewState extends State<HomeAdvertisementView>
+class _HomeAdvertisementState extends State<HomeAdvertisement>
     with SingleTickerProviderStateMixin {
   late PageController _pageController;
   int _currentPage = 0;
