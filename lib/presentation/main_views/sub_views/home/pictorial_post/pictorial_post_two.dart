@@ -61,7 +61,7 @@ class _PictorialPostTwoState extends State<PictorialPostTwo> {
                                 ),
                               ),
                               Text(
-                                "[ 어차피 결말은, 'Happy ending' 이야 ]\n내 스토리의 끝은 'Happy ending'이라는 의미를 가진 작품.",
+                                "[ 어차피 결말은, 'Happy ending' 이야 ]\n내 스토리의 끝은 '해피 앤딩'이라는 의미를 가진 작품.",
                                 style: TextStyle(fontSize: 14),
                               ),
                             ],

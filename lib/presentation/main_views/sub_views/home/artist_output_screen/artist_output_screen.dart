@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:handy_ipduk/presentation/main_views/sub_views/home/image/artist_output_screen_image.dart';
 import 'package:handy_ipduk/presentation/main_views/sub_views/home/my_artist/my_artist_view.dart';
 import 'package:handy_ipduk/presentation/utils/size_converter.dart';
 
@@ -10,8 +11,19 @@ class ArtistOutputScreen extends StatefulWidget {
 }
 
 class _ArtistOutputScreenState extends State<ArtistOutputScreen> {
+  String selectedImage = "";
+  String selectedName = "";
+
   @override
   Widget build(BuildContext context) {
+    final Map<String, dynamic>? data =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
+
+    if (data != null) {
+      selectedImage = data['imageId'] ?? '';
+      selectedName = data['name'] ?? '';
+    }
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.amber,
@@ -60,37 +72,53 @@ class _ArtistOutputScreenState extends State<ArtistOutputScreen> {
                           ],
                         ),
                       ),
-                      SizedBox(height: SizeConverter.getHeight(context, 30)),
+                      SizedBox(height: SizeConverter.getHeight(context, 25)),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 14.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 27.0),
                         child: SizedBox(
-                          width: SizeConverter.getWidth(context, 150),
+                          width: SizeConverter.getWidth(context, 125),
                           height: SizeConverter.getHeight(context, 150),
                           child: Container(
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(
-                                color: Colors.white,
+                                color: const Color.fromARGB(255, 40, 40, 40),
                                 width: 2,
                               ),
                             ),
+                            child: selectedImage.isNotEmpty
+                                ? ClipOval(
+                                    child: Image.network(
+                                      ImageData.getImageUrl(ImageId.image_1),
+                                      fit: BoxFit.cover,
+                                      width:
+                                          SizeConverter.getWidth(context, 85),
+                                      height:
+                                          SizeConverter.getHeight(context, 100),
+                                    ),
+                                  )
+                                : null,
                           ),
                         ),
                       ),
                       SizedBox(height: SizeConverter.getHeight(context, 10)),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 28.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 29.0),
                         child: SizedBox(
                           width: SizeConverter.getWidth(context, 122),
                           height: SizeConverter.getHeight(context, 50),
                           child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.transparent,
-                              border: Border.all(
-                                color: Colors.white,
-                                width: 2,
-                              ),
-                            ),
+                            child: selectedName.isNotEmpty
+                                ? Center(
+                                    child: Text(
+                                      selectedName,
+                                      style: const TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  )
+                                : null,
                           ),
                         ),
                       ),

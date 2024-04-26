@@ -35,42 +35,42 @@ class _HomeViewState extends State<HomeView> {
                   SizedBox(height: SizeConverter.getHeight(context, 20)),
                   Container(
                     constraints: BoxConstraints(
-                      maxHeight: SizeConverter.getHeight(context, 301),
+                      maxHeight: SizeConverter.getHeight(context, 271),
                     ),
                     child: const HomeAdvertisement(),
                   ),
                   SizedBox(height: SizeConverter.getHeight(context, 35)),
                   Container(
                     constraints: BoxConstraints(
-                      maxHeight: SizeConverter.getHeight(context, 301),
+                      maxHeight: SizeConverter.getHeight(context, 311),
                     ),
                     child: const ArtistOutputScreen(),
                   ),
-                  SizedBox(height: SizeConverter.getHeight(context, 150)),
+                  SizedBox(height: SizeConverter.getHeight(context, 100)),
                   Container(
                     constraints: BoxConstraints(
                       maxHeight: SizeConverter.getHeight(context, 201),
                     ),
                     child: const CalendarConnect(),
                   ),
-                  SizedBox(height: SizeConverter.getHeight(context, 150)),
+                  SizedBox(height: SizeConverter.getHeight(context, 100)),
                   Container(
                     constraints: BoxConstraints(
-                      maxHeight: SizeConverter.getHeight(context, 790),
+                      maxHeight: SizeConverter.getHeight(context, 800),
                     ),
                     child: const PictorialPostOne(),
                   ),
-                  SizedBox(height: SizeConverter.getHeight(context, 200)),
+                  SizedBox(height: SizeConverter.getHeight(context, 150)),
                   Container(
                     constraints: BoxConstraints(
-                      maxHeight: SizeConverter.getHeight(context, 790),
+                      maxHeight: SizeConverter.getHeight(context, 800),
                     ),
                     child: const PictorialPostTwo(),
                   ),
-                  SizedBox(height: SizeConverter.getHeight(context, 200)),
+                  SizedBox(height: SizeConverter.getHeight(context, 150)),
                   Container(
                     constraints: BoxConstraints(
-                      maxHeight: SizeConverter.getHeight(context, 790),
+                      maxHeight: SizeConverter.getHeight(context, 800),
                     ),
                     child: const PictorialPostThree(),
                   ),

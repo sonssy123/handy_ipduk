@@ -69,7 +69,7 @@ class _PictorialPostOneState extends State<PictorialPostOne> {
                                 ),
                               ),
                               Text(
-                                '[ 나의 라비앙로즈 ]\n인생을 살면서 어려움 어떤 어려움 없이 모두 이루면서 사는\n나의 장밋빛 인생이라는 의미를 가진 작품.',
+                                '[ 나의 라비앙로즈 ]\n인생을 살면서 어떤 어려움 없이 모두 이루면서 사는\n나의 장밋빛 인생이라는 의미를 가진 작품.',
                                 style: TextStyle(fontSize: 14),
                               ),
                             ],
