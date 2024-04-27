@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:handy_ipduk/presentation/extenstions/color_extension.dart';
 import 'package:handy_ipduk/presentation/main_views/sub_views/shop/advertisement/shop_advertisement.dart';
 import 'package:handy_ipduk/presentation/main_views/sub_views/shop/image/shop_button_image.dart';
-import 'package:handy_ipduk/presentation/main_views/sub_views/shop/loading_bar/shop_loading_bar_animation.dart';
+import 'package:handy_ipduk/presentation/loading_bar/loading_bar_animation.dart';
 import 'package:handy_ipduk/presentation/main_views/views/calendar_view.dart';
 import 'package:handy_ipduk/presentation/main_views/sub_views/shop/cart/cart_view.dart';
 import 'package:handy_ipduk/presentation/main_views/sub_views/shop/shopping_mall/shopping_mall_view.dart';
@@ -21,20 +21,22 @@ class _ShopViewState extends State<ShopView> {
   String selectedName = "";
 
   void _navigateToShoppingMall() {
-    setState(() {
-      _isLoading = true;
-    });
+    if (selectedImage.isNotEmpty && selectedName.isNotEmpty) {
+      setState(() {
+        _isLoading = true;
+      });
 
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const ShoppingMallView()),
-      ).then((_) {
-        setState(() {
-          _isLoading = false;
+      Future.delayed(const Duration(seconds: 3), () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const ShoppingMallView()),
+        ).then((_) {
+          setState(() {
+            _isLoading = false;
+          });
         });
       });
-    });
+    }
   }
 
   @override

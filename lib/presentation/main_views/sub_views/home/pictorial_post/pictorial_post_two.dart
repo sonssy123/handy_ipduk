@@ -14,7 +14,7 @@ class _PictorialPostTwoState extends State<PictorialPostTwo> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.amber,
+        // backgroundColor: Colors.black,
         body: Stack(
           children: [
             Column(

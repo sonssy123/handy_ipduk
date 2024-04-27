@@ -14,7 +14,7 @@ class _PictorialPostThreeState extends State<PictorialPostThree> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.amber,
+        // backgroundColor: Colors.black,
         body: Stack(
           children: [
             Column(

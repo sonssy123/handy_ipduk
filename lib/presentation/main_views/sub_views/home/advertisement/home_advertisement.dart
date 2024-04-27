@@ -48,7 +48,7 @@ class _HomeAdvertisementState extends State<HomeAdvertisement>
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.amber,
+        // backgroundColor: Colors.black,
         body: SizedBox(
           height: SizeConverter.getHeight(context, 270), // 전체 사이즈
           child: PageView.builder(
@@ -76,7 +76,7 @@ class _HomeAdvertisementState extends State<HomeAdvertisement>
                     ),
                   ),
                   Positioned(
-                    top: 180.0, // 수직 위치
+                    top: 185.0, // 수직 위치
                     left: 20.0, // 수평 위치
                     child: Text(
                       "${pageIndex + 1}/${ImageId.values.length}",

@@ -14,7 +14,7 @@ class _PictorialPostOneState extends State<PictorialPostOne> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.amber,
+        // backgroundColor: Colors.black,
         body: Stack(
           children: [
             Column(

@@ -40,7 +40,7 @@ class _MyArtistViewState extends State<MyArtistView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.amber,
+        // backgroundColor: Colors.black,
         body: Stack(
           children: [
             Column(

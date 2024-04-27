@@ -17,11 +17,17 @@ class TabBarTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      backgroundColor: Colors.black,
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: const Color.fromARGB(255, 30, 30, 30),
       selectedItemColor: ColorExtension.accentColor,
       unselectedItemColor: Colors.black,
       currentIndex: tabController.index,
       onTap: onTabTapped,
+      selectedFontSize: 0,
+      unselectedFontSize: 0,
+      iconSize: 24,
+      selectedIconTheme: const IconThemeData(size: 24),
+      unselectedIconTheme: const IconThemeData(size: 24),
       items: tabTypes.map((TabType type) {
         return BottomNavigationBarItem(
           icon: Icon(
