@@ -1,13 +1,13 @@
-class ArtistProfile {
-  final String mainimage;
+// class FirebaseStorageImgaeData {
+//   final String imageData;
 
-  ArtistProfile({
-    required this.mainimage,
-  });
+//   FirebaseStorageImgaeData({
+//     required this.imageData,
+//   });
 
-  factory ArtistProfile.fromJson(Map<String, dynamic> json) {
-    return ArtistProfile(
-      mainimage: json['mainimage'] ?? '', // 'mainimage' 키에 해당하는 값을 가져오기
-    );
-  }
-}
+//   factory FirebaseStorageImgaeData.fromJson(Map<String, dynamic> json) {
+//     return FirebaseStorageImgaeData(
+//       imageData: json['imageData'] ?? '', // 'imageData' 키에 해당하는 값을 가져오기
+//     );
+//   }
+// }

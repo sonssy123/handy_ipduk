@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:handy_ipduk/firebase_options.dart';
 import 'package:handy_ipduk/main_screen/launch_screen/launch_screen_view.dart';
+import 'package:handy_ipduk/storage_test.dart';
 import 'package:handy_ipduk/theme_data.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
@@ -25,7 +26,7 @@ class HandyIpduk extends StatelessWidget {
       theme: themeData,
       darkTheme: darkThemeData,
       debugShowCheckedModeBanner: false,
-      home: const MainLaunchScreenView(),
+      home: const StorageTest(),
     );
   }
 }
