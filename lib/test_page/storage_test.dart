@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:handy_ipduk/presentation/utils/firebase_image_data_converter.dart';
-import 'package:handy_ipduk/presentation/utils/image_converter.dart';
+import 'package:handy_ipduk/test_page/firebase_image_data_converter.dart';
+import 'package:handy_ipduk/test_page/image_converter.dart';
+import 'image_test.dart';
 
 class StorageTest extends StatefulWidget {
   const StorageTest({super.key});
@@ -26,23 +27,19 @@ class _StorageTestState extends State<StorageTest> {
               child: Column(
                 children: [
                   FutureBuilder<String?>(
-                    future: ImageConverter.getImageData(),
+                    future: ImageConverter.getImageData(ImageId.image_0),
                     builder: (context, snapshot) {
-                      // 데이터를 가져오는 중인 경우, 아무것도 표시하지 않는다
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const SizedBox.shrink();
-                        // 이슈가 발생했을 경우, 'Error: ${snapshot.error}'를 표시
                       } else if (snapshot.hasError) {
                         return Center(
                           child: Text('Error: ${snapshot.error}'),
                         );
                       } else if (snapshot.hasData) {
-                        // JSON 데이터에서 imageData를 가져와서 ArtistProfile 객체를 생성
                         final firebasestorageimagedata =
                             FirebaseStorageImgaeData.fromJson({
                           'imageData': snapshot.data,
                         });
-                        // ArtistProfile 객체의 imageData를 사용하여 이미지를 표시
                         return Column(
                           children: [
                             Image.network(firebasestorageimagedata.imageData),
