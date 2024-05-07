@@ -33,9 +33,13 @@ class _ProfileState extends State<Profile> {
       final User? user = _auth.currentUser;
       if (user != null) {
         final DocumentSnapshot<Map<String, dynamic>> userInfo =
-            await _firestore.collection('tb_admin').doc(user.uid).get();
+            await _firestore.collection('tb_user').doc(user.uid).get();
+
+        // userInfo.data(); // << FromJson 으로 감싸서 쓴다 [Freezed : Map 할 수도 있음]
+
         setState(() {
           _name = userInfo['name'] ?? '';
+          print('User ID: ${user.uid}');
         });
 
         final String profileImageUrl = userInfo['profile_image_url'] ?? '';

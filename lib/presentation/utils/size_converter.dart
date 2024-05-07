@@ -40,3 +40,4 @@ class SizeConverter {
 
 // width: SizeConverter.getWidth(context, 400),
 // height: SizeConverter.getHeight(context, 800),
+// padding: EdgeInsets.symmetric(vertical: SizeConverter.getVertical(context, 1)
