@@ -28,6 +28,36 @@ class _ProfileState extends State<Profile> {
     getUserInfo();
   }
 
+  // Future<void> getUserInfo() async {
+  //   try {
+  //     final User? user = _auth.currentUser;
+  //     if (user != null) {
+  //       final DocumentSnapshot<Map<String, dynamic>> userInfo =
+  //           await _firestore.collection('tb_user').doc(user.uid).get();
+
+  //       final Map<String, dynamic> userData = userInfo.data()!;
+
+  //       // 변경된 부분: Freezed 모델 사용하여 데이터 파싱
+  //       final UserContent userContent = UserContent.fromJson(userData['data']);
+
+  //       setState(() {
+  //         _name = userContent.name;
+  //       });
+
+  //       final String profileImageUrl = userContent.profileImageUrl;
+  //       if (profileImageUrl.isNotEmpty) {
+  //         final String? imageData =
+  //             await ImageConverter.getImageData(profileImageUrl);
+  //         setState(() {
+  //           _profileImageUrl = imageData!;
+  //         });
+  //       }
+  //     }
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
+
   Future<void> getUserInfo() async {
     try {
       final User? user = _auth.currentUser;
@@ -35,14 +65,13 @@ class _ProfileState extends State<Profile> {
         final DocumentSnapshot<Map<String, dynamic>> userInfo =
             await _firestore.collection('tb_user').doc(user.uid).get();
 
-        // userInfo.data(); // << FromJson 으로 감싸서 쓴다 [Freezed : Map 할 수도 있음]
+        final Map<String, dynamic> userData = userInfo.data()!;
 
         setState(() {
-          _name = userInfo['name'] ?? '';
-          print('User ID: ${user.uid}');
+          _name = userData['name'] ?? '';
         });
 
-        final String profileImageUrl = userInfo['profile_image_url'] ?? '';
+        final String profileImageUrl = userData['profile_image_url'] ?? '';
         if (profileImageUrl.isNotEmpty) {
           final String? imageData =
               await ImageConverter.getImageData(profileImageUrl);

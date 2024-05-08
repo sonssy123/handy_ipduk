@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 
 class NetworkInterceptor extends Interceptor {
-
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     print('onRequest > ${options.path}');
@@ -21,5 +20,4 @@ class NetworkInterceptor extends Interceptor {
     print('onError > ${err.message}');
     super.onError(err, handler);
   }
-  
 }

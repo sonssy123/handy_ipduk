@@ -25,18 +25,37 @@ class _MyPageState extends State<MyPage> {
     getUserInfo();
   }
 
+  // Future<void> getUserInfo() async {
+  //   try {
+  //     final User? user = _auth.currentUser;
+  //     if (user != null) {
+  //       final DocumentSnapshot<Map<String, dynamic>> userInfo =
+  //           await _firestore.collection('tb_user').doc(user.uid).get();
+  //       setState(() {
+  //         _name = userInfo['name'] ?? '';
+  //         _email = userInfo['email'] ?? '';
+  //         _nation = userInfo['nation'] ?? '';
+  //       });
+  //     }
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
+
   Future<void> getUserInfo() async {
     try {
       final User? user = _auth.currentUser;
       if (user != null) {
         final DocumentSnapshot<Map<String, dynamic>> userInfo =
             await _firestore.collection('tb_user').doc(user.uid).get();
+        final Map<String, dynamic> userData = userInfo.data()!;
         setState(() {
-          _name = userInfo['name'] ?? '';
-          _email = userInfo['email'] ?? '';
-          _nation = userInfo['nation'] ?? '';
+          _name = userData['name'] ?? '';
+          _email = userData['email'] ?? '';
+          _nation = userData['nation'] ?? '';
         });
       }
+      // 예외 처리
     } catch (e) {
       rethrow;
     }

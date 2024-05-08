@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:handy_ipduk/test_page_data/network/common/network_interceptor.dart';
+import 'package:handy_ipduk/data/network/common/network_interceptor.dart';
 
 class NetworkManager {
   static final NetworkManager _instance = NetworkManager._internal();
