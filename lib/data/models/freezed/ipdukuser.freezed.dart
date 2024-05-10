@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'user.dart';
+part of 'ipdukuser.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,34 +14,35 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-User _$UserFromJson(Map<String, dynamic> json) {
-  return _User.fromJson(json);
+IpdukUser _$IpdukUserFromJson(Map<String, dynamic> json) {
+  return _IpdukUser.fromJson(json);
 }
 
 /// @nodoc
-mixin _$User {
-  String get user => throw _privateConstructorUsedError;
+mixin _$IpdukUser {
+  String get ipdukuser => throw _privateConstructorUsedError;
   Data get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
+  $IpdukUserCopyWith<IpdukUser> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserCopyWith<$Res> {
-  factory $UserCopyWith(User value, $Res Function(User) then) =
-      _$UserCopyWithImpl<$Res, User>;
+abstract class $IpdukUserCopyWith<$Res> {
+  factory $IpdukUserCopyWith(IpdukUser value, $Res Function(IpdukUser) then) =
+      _$IpdukUserCopyWithImpl<$Res, IpdukUser>;
   @useResult
-  $Res call({String user, Data data});
+  $Res call({String ipdukuser, Data data});
 
   $DataCopyWith<$Res> get data;
 }
 
 /// @nodoc
-class _$UserCopyWithImpl<$Res, $Val extends User>
-    implements $UserCopyWith<$Res> {
-  _$UserCopyWithImpl(this._value, this._then);
+class _$IpdukUserCopyWithImpl<$Res, $Val extends IpdukUser>
+    implements $IpdukUserCopyWith<$Res> {
+  _$IpdukUserCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -51,13 +52,13 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = null,
+    Object? ipdukuser = null,
     Object? data = null,
   }) {
     return _then(_value.copyWith(
-      user: null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
+      ipdukuser: null == ipdukuser
+          ? _value.ipdukuser
+          : ipdukuser // ignore: cast_nullable_to_non_nullable
               as String,
       data: null == data
           ? _value.data
@@ -76,35 +77,37 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
 }
 
 /// @nodoc
-abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
-  factory _$$UserImplCopyWith(
-          _$UserImpl value, $Res Function(_$UserImpl) then) =
-      __$$UserImplCopyWithImpl<$Res>;
+abstract class _$$IpdukUserImplCopyWith<$Res>
+    implements $IpdukUserCopyWith<$Res> {
+  factory _$$IpdukUserImplCopyWith(
+          _$IpdukUserImpl value, $Res Function(_$IpdukUserImpl) then) =
+      __$$IpdukUserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String user, Data data});
+  $Res call({String ipdukuser, Data data});
 
   @override
   $DataCopyWith<$Res> get data;
 }
 
 /// @nodoc
-class __$$UserImplCopyWithImpl<$Res>
-    extends _$UserCopyWithImpl<$Res, _$UserImpl>
-    implements _$$UserImplCopyWith<$Res> {
-  __$$UserImplCopyWithImpl(_$UserImpl _value, $Res Function(_$UserImpl) _then)
+class __$$IpdukUserImplCopyWithImpl<$Res>
+    extends _$IpdukUserCopyWithImpl<$Res, _$IpdukUserImpl>
+    implements _$$IpdukUserImplCopyWith<$Res> {
+  __$$IpdukUserImplCopyWithImpl(
+      _$IpdukUserImpl _value, $Res Function(_$IpdukUserImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = null,
+    Object? ipdukuser = null,
     Object? data = null,
   }) {
-    return _then(_$UserImpl(
-      user: null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
+    return _then(_$IpdukUserImpl(
+      ipdukuser: null == ipdukuser
+          ? _value.ipdukuser
+          : ipdukuser // ignore: cast_nullable_to_non_nullable
               as String,
       data: null == data
           ? _value.data
@@ -116,62 +119,65 @@ class __$$UserImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$UserImpl implements _User {
-  const _$UserImpl({required this.user, required this.data});
+class _$IpdukUserImpl implements _IpdukUser {
+  const _$IpdukUserImpl({required this.ipdukuser, required this.data});
 
-  factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserImplFromJson(json);
+  factory _$IpdukUserImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IpdukUserImplFromJson(json);
 
   @override
-  final String user;
+  final String ipdukuser;
   @override
   final Data data;
 
   @override
   String toString() {
-    return 'User(user: $user, data: $data)';
+    return 'IpdukUser(ipdukuser: $ipdukuser, data: $data)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserImpl &&
-            (identical(other.user, user) || other.user == user) &&
+            other is _$IpdukUserImpl &&
+            (identical(other.ipdukuser, ipdukuser) ||
+                other.ipdukuser == ipdukuser) &&
             (identical(other.data, data) || other.data == data));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, user, data);
+  int get hashCode => Object.hash(runtimeType, ipdukuser, data);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UserImplCopyWith<_$UserImpl> get copyWith =>
-      __$$UserImplCopyWithImpl<_$UserImpl>(this, _$identity);
+  _$$IpdukUserImplCopyWith<_$IpdukUserImpl> get copyWith =>
+      __$$IpdukUserImplCopyWithImpl<_$IpdukUserImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UserImplToJson(
+    return _$$IpdukUserImplToJson(
       this,
     );
   }
 }
 
-abstract class _User implements User {
-  const factory _User({required final String user, required final Data data}) =
-      _$UserImpl;
+abstract class _IpdukUser implements IpdukUser {
+  const factory _IpdukUser(
+      {required final String ipdukuser,
+      required final Data data}) = _$IpdukUserImpl;
 
-  factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
+  factory _IpdukUser.fromJson(Map<String, dynamic> json) =
+      _$IpdukUserImpl.fromJson;
 
   @override
-  String get user;
+  String get ipdukuser;
   @override
   Data get data;
   @override
   @JsonKey(ignore: true)
-  _$$UserImplCopyWith<_$UserImpl> get copyWith =>
+  _$$IpdukUserImplCopyWith<_$IpdukUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -181,7 +187,8 @@ Data _$DataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Data {
-  List<UserContent> get userContents => throw _privateConstructorUsedError;
+  List<IpdukUserContent> get ipdukuserContents =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -193,7 +200,7 @@ abstract class $DataCopyWith<$Res> {
   factory $DataCopyWith(Data value, $Res Function(Data) then) =
       _$DataCopyWithImpl<$Res, Data>;
   @useResult
-  $Res call({List<UserContent> userContents});
+  $Res call({List<IpdukUserContent> ipdukuserContents});
 }
 
 /// @nodoc
@@ -209,13 +216,13 @@ class _$DataCopyWithImpl<$Res, $Val extends Data>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userContents = null,
+    Object? ipdukuserContents = null,
   }) {
     return _then(_value.copyWith(
-      userContents: null == userContents
-          ? _value.userContents
-          : userContents // ignore: cast_nullable_to_non_nullable
-              as List<UserContent>,
+      ipdukuserContents: null == ipdukuserContents
+          ? _value.ipdukuserContents
+          : ipdukuserContents // ignore: cast_nullable_to_non_nullable
+              as List<IpdukUserContent>,
     ) as $Val);
   }
 }
@@ -227,7 +234,7 @@ abstract class _$$DataImplCopyWith<$Res> implements $DataCopyWith<$Res> {
       __$$DataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<UserContent> userContents});
+  $Res call({List<IpdukUserContent> ipdukuserContents});
 }
 
 /// @nodoc
@@ -240,13 +247,13 @@ class __$$DataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userContents = null,
+    Object? ipdukuserContents = null,
   }) {
     return _then(_$DataImpl(
-      userContents: null == userContents
-          ? _value._userContents
-          : userContents // ignore: cast_nullable_to_non_nullable
-              as List<UserContent>,
+      ipdukuserContents: null == ipdukuserContents
+          ? _value._ipdukuserContents
+          : ipdukuserContents // ignore: cast_nullable_to_non_nullable
+              as List<IpdukUserContent>,
     ));
   }
 }
@@ -254,23 +261,24 @@ class __$$DataImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$DataImpl implements _Data {
-  const _$DataImpl({required final List<UserContent> userContents})
-      : _userContents = userContents;
+  const _$DataImpl({required final List<IpdukUserContent> ipdukuserContents})
+      : _ipdukuserContents = ipdukuserContents;
 
   factory _$DataImpl.fromJson(Map<String, dynamic> json) =>
       _$$DataImplFromJson(json);
 
-  final List<UserContent> _userContents;
+  final List<IpdukUserContent> _ipdukuserContents;
   @override
-  List<UserContent> get userContents {
-    if (_userContents is EqualUnmodifiableListView) return _userContents;
+  List<IpdukUserContent> get ipdukuserContents {
+    if (_ipdukuserContents is EqualUnmodifiableListView)
+      return _ipdukuserContents;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_userContents);
+    return EqualUnmodifiableListView(_ipdukuserContents);
   }
 
   @override
   String toString() {
-    return 'Data(userContents: $userContents)';
+    return 'Data(ipdukuserContents: $ipdukuserContents)';
   }
 
   @override
@@ -279,13 +287,13 @@ class _$DataImpl implements _Data {
         (other.runtimeType == runtimeType &&
             other is _$DataImpl &&
             const DeepCollectionEquality()
-                .equals(other._userContents, _userContents));
+                .equals(other._ipdukuserContents, _ipdukuserContents));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_userContents));
+      runtimeType, const DeepCollectionEquality().hash(_ipdukuserContents));
 
   @JsonKey(ignore: true)
   @override
@@ -302,25 +310,25 @@ class _$DataImpl implements _Data {
 }
 
 abstract class _Data implements Data {
-  const factory _Data({required final List<UserContent> userContents}) =
-      _$DataImpl;
+  const factory _Data(
+      {required final List<IpdukUserContent> ipdukuserContents}) = _$DataImpl;
 
   factory _Data.fromJson(Map<String, dynamic> json) = _$DataImpl.fromJson;
 
   @override
-  List<UserContent> get userContents;
+  List<IpdukUserContent> get ipdukuserContents;
   @override
   @JsonKey(ignore: true)
   _$$DataImplCopyWith<_$DataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-UserContent _$UserContentFromJson(Map<String, dynamic> json) {
-  return _UserContent.fromJson(json);
+IpdukUserContent _$IpdukUserContentFromJson(Map<String, dynamic> json) {
+  return _IpdukUserContent.fromJson(json);
 }
 
 /// @nodoc
-mixin _$UserContent {
+mixin _$IpdukUserContent {
   String get uid => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
@@ -329,15 +337,15 @@ mixin _$UserContent {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserContentCopyWith<UserContent> get copyWith =>
+  $IpdukUserContentCopyWith<IpdukUserContent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserContentCopyWith<$Res> {
-  factory $UserContentCopyWith(
-          UserContent value, $Res Function(UserContent) then) =
-      _$UserContentCopyWithImpl<$Res, UserContent>;
+abstract class $IpdukUserContentCopyWith<$Res> {
+  factory $IpdukUserContentCopyWith(
+          IpdukUserContent value, $Res Function(IpdukUserContent) then) =
+      _$IpdukUserContentCopyWithImpl<$Res, IpdukUserContent>;
   @useResult
   $Res call(
       {String uid,
@@ -348,9 +356,9 @@ abstract class $UserContentCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserContentCopyWithImpl<$Res, $Val extends UserContent>
-    implements $UserContentCopyWith<$Res> {
-  _$UserContentCopyWithImpl(this._value, this._then);
+class _$IpdukUserContentCopyWithImpl<$Res, $Val extends IpdukUserContent>
+    implements $IpdukUserContentCopyWith<$Res> {
+  _$IpdukUserContentCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -392,11 +400,11 @@ class _$UserContentCopyWithImpl<$Res, $Val extends UserContent>
 }
 
 /// @nodoc
-abstract class _$$UserContentImplCopyWith<$Res>
-    implements $UserContentCopyWith<$Res> {
-  factory _$$UserContentImplCopyWith(
-          _$UserContentImpl value, $Res Function(_$UserContentImpl) then) =
-      __$$UserContentImplCopyWithImpl<$Res>;
+abstract class _$$IpdukUserContentImplCopyWith<$Res>
+    implements $IpdukUserContentCopyWith<$Res> {
+  factory _$$IpdukUserContentImplCopyWith(_$IpdukUserContentImpl value,
+          $Res Function(_$IpdukUserContentImpl) then) =
+      __$$IpdukUserContentImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -408,11 +416,11 @@ abstract class _$$UserContentImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$UserContentImplCopyWithImpl<$Res>
-    extends _$UserContentCopyWithImpl<$Res, _$UserContentImpl>
-    implements _$$UserContentImplCopyWith<$Res> {
-  __$$UserContentImplCopyWithImpl(
-      _$UserContentImpl _value, $Res Function(_$UserContentImpl) _then)
+class __$$IpdukUserContentImplCopyWithImpl<$Res>
+    extends _$IpdukUserContentCopyWithImpl<$Res, _$IpdukUserContentImpl>
+    implements _$$IpdukUserContentImplCopyWith<$Res> {
+  __$$IpdukUserContentImplCopyWithImpl(_$IpdukUserContentImpl _value,
+      $Res Function(_$IpdukUserContentImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -424,7 +432,7 @@ class __$$UserContentImplCopyWithImpl<$Res>
     Object? nation = null,
     Object? profileImageUrl = null,
   }) {
-    return _then(_$UserContentImpl(
+    return _then(_$IpdukUserContentImpl(
       uid: null == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -451,16 +459,16 @@ class __$$UserContentImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$UserContentImpl implements _UserContent {
-  const _$UserContentImpl(
+class _$IpdukUserContentImpl implements _IpdukUserContent {
+  const _$IpdukUserContentImpl(
       {required this.uid,
       required this.email,
       required this.name,
       required this.nation,
       required this.profileImageUrl});
 
-  factory _$UserContentImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserContentImplFromJson(json);
+  factory _$IpdukUserContentImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IpdukUserContentImplFromJson(json);
 
   @override
   final String uid;
@@ -475,14 +483,14 @@ class _$UserContentImpl implements _UserContent {
 
   @override
   String toString() {
-    return 'UserContent(uid: $uid, email: $email, name: $name, nation: $nation, profileImageUrl: $profileImageUrl)';
+    return 'IpdukUserContent(uid: $uid, email: $email, name: $name, nation: $nation, profileImageUrl: $profileImageUrl)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserContentImpl &&
+            other is _$IpdukUserContentImpl &&
             (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.name, name) || other.name == name) &&
@@ -499,27 +507,28 @@ class _$UserContentImpl implements _UserContent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UserContentImplCopyWith<_$UserContentImpl> get copyWith =>
-      __$$UserContentImplCopyWithImpl<_$UserContentImpl>(this, _$identity);
+  _$$IpdukUserContentImplCopyWith<_$IpdukUserContentImpl> get copyWith =>
+      __$$IpdukUserContentImplCopyWithImpl<_$IpdukUserContentImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UserContentImplToJson(
+    return _$$IpdukUserContentImplToJson(
       this,
     );
   }
 }
 
-abstract class _UserContent implements UserContent {
-  const factory _UserContent(
+abstract class _IpdukUserContent implements IpdukUserContent {
+  const factory _IpdukUserContent(
       {required final String uid,
       required final String email,
       required final String name,
       required final String nation,
-      required final String profileImageUrl}) = _$UserContentImpl;
+      required final String profileImageUrl}) = _$IpdukUserContentImpl;
 
-  factory _UserContent.fromJson(Map<String, dynamic> json) =
-      _$UserContentImpl.fromJson;
+  factory _IpdukUserContent.fromJson(Map<String, dynamic> json) =
+      _$IpdukUserContentImpl.fromJson;
 
   @override
   String get uid;
@@ -533,6 +542,6 @@ abstract class _UserContent implements UserContent {
   String get profileImageUrl;
   @override
   @JsonKey(ignore: true)
-  _$$UserContentImplCopyWith<_$UserContentImpl> get copyWith =>
+  _$$IpdukUserContentImplCopyWith<_$IpdukUserContentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

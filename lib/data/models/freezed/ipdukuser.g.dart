@@ -1,35 +1,37 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user.dart';
+part of 'ipdukuser.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
-      user: json['user'] as String,
+_$IpdukUserImpl _$$IpdukUserImplFromJson(Map<String, dynamic> json) =>
+    _$IpdukUserImpl(
+      ipdukuser: json['ipdukuser'] as String,
       data: Data.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
+Map<String, dynamic> _$$IpdukUserImplToJson(_$IpdukUserImpl instance) =>
     <String, dynamic>{
-      'user': instance.user,
+      'ipdukuser': instance.ipdukuser,
       'data': instance.data,
     };
 
 _$DataImpl _$$DataImplFromJson(Map<String, dynamic> json) => _$DataImpl(
-      userContents: (json['userContents'] as List<dynamic>)
-          .map((e) => UserContent.fromJson(e as Map<String, dynamic>))
+      ipdukuserContents: (json['ipdukuserContents'] as List<dynamic>)
+          .map((e) => IpdukUserContent.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
 Map<String, dynamic> _$$DataImplToJson(_$DataImpl instance) =>
     <String, dynamic>{
-      'userContents': instance.userContents,
+      'ipdukuserContents': instance.ipdukuserContents,
     };
 
-_$UserContentImpl _$$UserContentImplFromJson(Map<String, dynamic> json) =>
-    _$UserContentImpl(
+_$IpdukUserContentImpl _$$IpdukUserContentImplFromJson(
+        Map<String, dynamic> json) =>
+    _$IpdukUserContentImpl(
       uid: json['uid'] as String,
       email: json['email'] as String,
       name: json['name'] as String,
@@ -37,7 +39,8 @@ _$UserContentImpl _$$UserContentImplFromJson(Map<String, dynamic> json) =>
       profileImageUrl: json['profileImageUrl'] as String,
     );
 
-Map<String, dynamic> _$$UserContentImplToJson(_$UserContentImpl instance) =>
+Map<String, dynamic> _$$IpdukUserContentImplToJson(
+        _$IpdukUserContentImpl instance) =>
     <String, dynamic>{
       'uid': instance.uid,
       'email': instance.email,
