@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:handy_ipduk/main_screen/tab_screen/tab_screen_view.dart';
 import 'package:handy_ipduk/presentation/extenstions/color_extension.dart';
 import 'package:handy_ipduk/presentation/utils/size_converter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MainLoginScreenView extends StatefulWidget {
   const MainLoginScreenView({super.key});
@@ -11,13 +13,39 @@ class MainLoginScreenView extends StatefulWidget {
 }
 
 class _MainLoginScreenViewState extends State<MainLoginScreenView> {
-  final TextEditingController _idController = TextEditingController();
-  final TextEditingController _pwController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  Future<void> _login() async {
+    final email = _emailController.text;
+    final password = _passwordController.text;
+
+    try {
+      final userCredential = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      final user = userCredential.user;
+      if (user != null) {
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setBool('didLogout', false);
+        print('User ID: ${user.uid}');
+        print('로그인 되었습니다');
+        Navigator.of(_scaffoldKey.currentContext!).pushReplacement(
+          MaterialPageRoute(builder: (context) => const MainTabScreenView()),
+        );
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        key: _scaffoldKey,
         body: Center(
           child: SingleChildScrollView(
             child: Column(
@@ -35,7 +63,7 @@ class _MainLoginScreenViewState extends State<MainLoginScreenView> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 50), // ID 창 길이 조정
                   child: TextField(
-                    controller: _idController,
+                    controller: _emailController,
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       hintText: 'ID를 입력해주세요',
@@ -56,7 +84,7 @@ class _MainLoginScreenViewState extends State<MainLoginScreenView> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 50), // PW 창 길이 조정
                   child: TextField(
-                    controller: _pwController,
+                    controller: _passwordController,
                     obscureText: true,
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
@@ -74,40 +102,24 @@ class _MainLoginScreenViewState extends State<MainLoginScreenView> {
                   ),
                 ),
                 SizedBox(height: SizeConverter.getHeight(context, 50)),
-                SizedBox(
-                  width: SizeConverter.getWidth(context, 200),
-                  child: const LoginButton(),
+                ElevatedButton(
+                  onPressed: _login,
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: ColorExtension.accentColor,
+                    backgroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      side: const BorderSide(
+                          color: Color.fromARGB(255, 8, 236, 205)),
+                    ),
+                  ),
+                  child: const Text('Sign In'),
                 ),
               ],
             ),
           ),
         ),
       ),
-    );
-  }
-}
-
-class LoginButton extends StatelessWidget {
-  const LoginButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const MainTabScreenView()),
-        );
-      },
-      style: ElevatedButton.styleFrom(
-        foregroundColor: ColorExtension.accentColor,
-        backgroundColor: Colors.black,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-          side: const BorderSide(color: Color.fromARGB(255, 8, 236, 205)),
-        ),
-      ),
-      child: const Text('Sign In'),
     );
   }
 }
