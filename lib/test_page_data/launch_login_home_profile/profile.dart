@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:handy_ipduk/data/models/freezed/ipduk_user.dart';
 import 'package:handy_ipduk/presentation/extenstions/color_extension.dart';
 import 'package:handy_ipduk/presentation/utils/size_converter.dart';
 import 'package:handy_ipduk/test_page_data/launch_login_home_profile/login.dart';
@@ -28,36 +29,6 @@ class _ProfileState extends State<Profile> {
     getUserInfo();
   }
 
-  // Future<void> getUserInfo() async {
-  //   try {
-  //     final User? user = _auth.currentUser;
-  //     if (user != null) {
-  //       final DocumentSnapshot<Map<String, dynamic>> userInfo =
-  //           await _firestore.collection('tb_user').doc(user.uid).get();
-
-  //       final Map<String, dynamic> userData = userInfo.data()!;
-
-  //       // 변경된 부분: Freezed 모델 사용하여 데이터 파싱
-  //       final UserContent userContent = UserContent.fromJson(userData['data']);
-
-  //       setState(() {
-  //         _name = userContent.name;
-  //       });
-
-  //       final String profileImageUrl = userContent.profileImageUrl;
-  //       if (profileImageUrl.isNotEmpty) {
-  //         final String? imageData =
-  //             await ImageConverter.getImageData(profileImageUrl);
-  //         setState(() {
-  //           _profileImageUrl = imageData!;
-  //         });
-  //       }
-  //     }
-  //   } catch (e) {
-  //     rethrow;
-  //   }
-  // }
-
   Future<void> getUserInfo() async {
     try {
       final User? user = _auth.currentUser;
@@ -67,11 +38,14 @@ class _ProfileState extends State<Profile> {
 
         final Map<String, dynamic> userData = userInfo.data()!;
 
+        final IpdukUser ipdukUser = IpdukUser.fromJson(userData);
+
         setState(() {
-          _name = userData['name'] ?? '';
+          _name = ipdukUser.name;
         });
 
-        final String profileImageUrl = userData['profile_image_url'] ?? '';
+        final String profileImageUrl = ipdukUser.profileImageUrl;
+
         if (profileImageUrl.isNotEmpty) {
           final String? imageData =
               await ImageConverter.getImageData(profileImageUrl);
@@ -209,31 +183,34 @@ class _ProfileState extends State<Profile> {
 }
 
 /*
+  Future<void> getUserInfo() async {
+    try {
+      final User? user = _auth.currentUser;
+      if (user != null) {
+        final DocumentSnapshot<Map<String, dynamic>> userInfo =
+            await _firestore.collection('tb_user').doc(user.uid).get();
 
-Launch 화면
+        final Map<String, dynamic> userData = userInfo.data()!;
 
+        final IpdukUserContent userContent =
+            IpdukUserContent.fromJson(userData);
 
+        setState(() {
+          _name = userContent.name;
+        });
 
-1. Authentication 에서 User 정보가 있는지 확인 ()
-
-
-2. 이전에 로그아웃을 했는지, 안했는지 두가지 경우 확인
-
-
-  - [1]. 로그아웃을 하지 않았을 경우 ()
-
-    : (1). SharedPreferences 으로 이전 상태를 반영 ()
-
-    : (2). 해당 User 의 정보를 가져오기 ()
-
-    : (3). 자동 로그인 ()
-
-    : (4). Home 화면으로 이동 ()
-
-
-
-  - [2]. 로그아웃을 했을 경우
-
-    : (1). Login 화면으로 이동 ()
+        final String profileImageUrl = userContent.profileImageUrl;
+        if (profileImageUrl.isNotEmpty) {
+          final String? imageData =
+              await ImageConverter.getImageData(profileImageUrl);
+          setState(() {
+            _profileImageUrl = imageData!;
+          });
+        }
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
 
 */
