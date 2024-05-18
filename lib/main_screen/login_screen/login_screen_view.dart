@@ -1,51 +1,47 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:handy_ipduk/main_screen/login_screen/user_store_notifier.dart';
 import 'package:handy_ipduk/main_screen/tab_screen/tab_screen_view.dart';
 import 'package:handy_ipduk/presentation/extenstions/color_extension.dart';
 import 'package:handy_ipduk/presentation/utils/size_converter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-class MainLoginScreenView extends StatefulWidget {
+class MainLoginScreenView extends ConsumerStatefulWidget {
   const MainLoginScreenView({super.key});
 
   @override
-  State<MainLoginScreenView> createState() => _MainLoginScreenViewState();
+  ConsumerState<MainLoginScreenView> createState() =>
+      _MainLoginScreenViewState();
 }
 
-class _MainLoginScreenViewState extends State<MainLoginScreenView> {
+class _MainLoginScreenViewState extends ConsumerState<MainLoginScreenView> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   Future<void> _login() async {
     final email = _emailController.text;
     final password = _passwordController.text;
+    ref.read(userStoreProvider.notifier).login(email, password);
+  }
 
-    try {
-      final userCredential = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
-      final user = userCredential.user;
-      if (user != null) {
-        final SharedPreferences prefs = await SharedPreferences.getInstance();
-        prefs.setBool('didLogout', false);
-        print('User ID: ${user.uid}');
-        print('로그인 되었습니다');
-        Navigator.of(_scaffoldKey.currentContext!).pushReplacement(
-          MaterialPageRoute(builder: (context) => const MainTabScreenView()),
-        );
+  @override
+  void initState() {
+    super.initState();
+
+    ref.listen(userStoreProvider, (previous, next) {
+      if (next.user == null) {
+        return;
       }
-    } catch (e) {
-      rethrow;
-    }
+
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const MainTabScreenView()),
+      );
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        key: _scaffoldKey,
         body: Center(
           child: SingleChildScrollView(
             child: Column(
