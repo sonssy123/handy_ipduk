@@ -20,22 +20,18 @@ class _MainLoginScreenViewState extends ConsumerState<MainLoginScreenView> {
   Future<void> _login() async {
     final email = _emailController.text;
     final password = _passwordController.text;
-    ref.read(userStoreProvider.notifier).login(email, password);
-  }
-
-  @override
-  void initState() {
-    super.initState();
-
-    ref.listen(userStoreProvider, (previous, next) {
-      if (next.user == null) {
-        return;
-      }
-
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const MainTabScreenView()),
-      );
-    });
+    ref.read(userStoreProvider.notifier).login(
+      email,
+      password,
+      onSuccess: () {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const MainTabScreenView()),
+        );
+      },
+      onFailure: (error) {
+        const Text('로그인 실패');
+      },
+    );
   }
 
   @override
@@ -56,8 +52,7 @@ class _MainLoginScreenViewState extends ConsumerState<MainLoginScreenView> {
                 ),
                 SizedBox(height: SizeConverter.getHeight(context, 70)),
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 50), // ID 창 길이 조정
+                  padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: TextField(
                     controller: _emailController,
                     style: const TextStyle(color: Colors.white),
@@ -77,8 +72,7 @@ class _MainLoginScreenViewState extends ConsumerState<MainLoginScreenView> {
                 ),
                 SizedBox(height: SizeConverter.getHeight(context, 20)),
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 50), // PW 창 길이 조정
+                  padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: TextField(
                     controller: _passwordController,
                     obscureText: true,

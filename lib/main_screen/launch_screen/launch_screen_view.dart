@@ -1,32 +1,69 @@
 import 'dart:async';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:handy_ipduk/main_screen/launch_screen/animated_word.dart';
 import 'package:handy_ipduk/main_screen/login_screen/login_screen_view.dart';
+import 'package:handy_ipduk/main_screen/login_screen/user_store_notifier.dart';
 import 'package:handy_ipduk/main_screen/tab_screen/tab_screen_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class MainLaunchScreenView extends StatefulWidget {
+class MainLaunchScreenView extends ConsumerStatefulWidget {
   const MainLaunchScreenView({Key? key}) : super(key: key);
 
   @override
-  State<MainLaunchScreenView> createState() => _MainLaunchScreenViewState();
+  ConsumerState<MainLaunchScreenView> createState() =>
+      _MainLaunchScreenViewState();
 }
 
-class _MainLaunchScreenViewState extends State<MainLaunchScreenView>
+class _MainLaunchScreenViewState extends ConsumerState<MainLaunchScreenView>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-
   final List<String> _alphabets = ['i', 'p', 'd', 'u', 'k'];
   final List<Animation<double>> _alphabetAnimations = [];
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  void checkUserStatus() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    final email = prefs.getString('email') ?? '';
+
+    final password = prefs.getString('password') ?? '';
+
+    if (email.isEmpty && password.isEmpty) {
+      Timer(const Duration(milliseconds: 5000), () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const MainLoginScreenView()),
+        );
+      });
+      return;
+    }
+
+    ref.read(userStoreProvider.notifier).login(
+      email,
+      password,
+      onSuccess: () {
+        Timer(const Duration(milliseconds: 5000), () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const MainTabScreenView()),
+          );
+        });
+      },
+      onFailure: (error) {
+        Timer(const Duration(milliseconds: 5000), () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const MainLoginScreenView()),
+          );
+        });
+      },
+    );
+  }
 
   @override
   void initState() {
     super.initState();
-
     checkUserStatus();
 
     _controller = AnimationController(
@@ -54,29 +91,6 @@ class _MainLaunchScreenViewState extends State<MainLaunchScreenView>
     _controller.forward();
   }
 
-  void checkUserStatus() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    print('로그인 정보 확인 중 입니다');
-
-    final currentUser = _auth.currentUser;
-    final bool didLogout = prefs.getBool('didLogout') ?? false;
-    final bool isLoggedIn = currentUser != null && !didLogout;
-
-    if (isLoggedIn) {
-      Navigator.of(_scaffoldKey.currentContext!).pushReplacement(
-        MaterialPageRoute(builder: (context) => const MainTabScreenView()),
-      );
-      print('이미 로그인 정보가 있습니다');
-    } else {
-      Timer(const Duration(milliseconds: 6000), () {
-        Navigator.of(_scaffoldKey.currentContext!).pushReplacement(
-          MaterialPageRoute(builder: (context) => const MainLoginScreenView()),
-        );
-      });
-      print('로그인 정보가 없거나 로그아웃된 계정입니다');
-    }
-  }
-
   @override
   void dispose() {
     _controller.dispose();
@@ -87,7 +101,6 @@ class _MainLaunchScreenViewState extends State<MainLaunchScreenView>
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        key: _scaffoldKey,
         backgroundColor: Colors.black,
         body: Stack(
           children: [
