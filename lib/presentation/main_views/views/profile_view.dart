@@ -9,6 +9,7 @@ import 'package:handy_ipduk/presentation/main_views/sub_views/profile/purchase_h
 import 'package:handy_ipduk/presentation/main_views/sub_views/shop/cart/cart_view.dart';
 import 'package:handy_ipduk/presentation/main_views/views/shop_view.dart';
 import 'package:handy_ipduk/presentation/utils/size_converter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
@@ -31,10 +32,11 @@ class _ProfileViewState extends State<ProfileView> {
   Future<void> _logout() async {
     try {
       await _auth.signOut();
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.clear();
       Navigator.of(_scaffoldKey.currentContext!).pushReplacement(
-        MaterialPageRoute(builder: (context) => MainLoginScreenView()),
+        MaterialPageRoute(builder: (context) => const MainLoginScreenView()),
       );
-      print('로그아웃 되었습니다');
     } catch (e) {
       rethrow;
     }
