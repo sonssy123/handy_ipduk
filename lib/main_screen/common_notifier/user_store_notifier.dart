@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/ui/firebase_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:handy_ipduk/data/models/freezed/ipduk_user.dart';
+import 'package:handy_ipduk/data/models/ipduk_user/ipduk_user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final userStoreProvider =

@@ -6,14 +6,6 @@ extension MediaQueryExtension on MediaQuery {
       MediaQuery.of(context).size.width;
   static double screenHeight(BuildContext context) =>
       MediaQuery.of(context).size.height;
-  static double screenLeft(BuildContext context) =>
-      MediaQuery.of(context).padding.left;
-  static double screenRight(BuildContext context) =>
-      MediaQuery.of(context).padding.right;
-  static double screenHorizontal(BuildContext context) =>
-      MediaQuery.of(context).padding.horizontal;
-  static double screenVertical(BuildContext context) =>
-      MediaQuery.of(context).padding.vertical;
 }
 
 // print('sizer > ${MediaQueryExtension.screenSize(context)}');

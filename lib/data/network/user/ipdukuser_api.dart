@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:handy_ipduk/data/common/data_source.dart';
-import 'package:handy_ipduk/data/models/freezed/ipduk_user.dart';
+import 'package:handy_ipduk/data/models/ipduk_user/ipduk_user.dart';
 import 'package:handy_ipduk/data/network/common/network_manager.dart';
 
 class IpdukUserApi implements DataSource<IpdukUser> {

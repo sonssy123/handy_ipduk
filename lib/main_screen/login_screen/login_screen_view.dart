@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:handy_ipduk/main_screen/login_screen/user_store_notifier.dart';
+import 'package:handy_ipduk/main_screen/common_notifier/user_store_notifier.dart';
 import 'package:handy_ipduk/main_screen/tab_screen/tab_screen_view.dart';
 import 'package:handy_ipduk/presentation/extenstions/color_extension.dart';
 import 'package:handy_ipduk/presentation/utils/size_converter.dart';
@@ -50,7 +50,8 @@ class _MainLoginScreenViewState extends ConsumerState<MainLoginScreenView> {
                     fontSize: 40,
                   ),
                 ),
-                SizedBox(height: SizeConverter.getHeight(context, 70)),
+                SizedBox(
+                    height: SizeConverter.getHeightPercentage(context, 0.085)),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: TextField(
@@ -70,7 +71,8 @@ class _MainLoginScreenViewState extends ConsumerState<MainLoginScreenView> {
                     ),
                   ),
                 ),
-                SizedBox(height: SizeConverter.getHeight(context, 20)),
+                SizedBox(
+                    height: SizeConverter.getHeightPercentage(context, 0.02)),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: TextField(
@@ -91,7 +93,8 @@ class _MainLoginScreenViewState extends ConsumerState<MainLoginScreenView> {
                     ),
                   ),
                 ),
-                SizedBox(height: SizeConverter.getHeight(context, 50)),
+                SizedBox(
+                    height: SizeConverter.getHeightPercentage(context, 0.06)),
                 ElevatedButton(
                   onPressed: _login,
                   style: ElevatedButton.styleFrom(

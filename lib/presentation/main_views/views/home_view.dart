@@ -70,6 +70,7 @@ class _HomeViewState extends State<HomeView> {
 
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.amber,
         appBar: AppBar(
           title: const Text('IPDUK'),
           centerTitle: true,
@@ -80,14 +81,18 @@ class _HomeViewState extends State<HomeView> {
             SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(height: SizeConverter.getHeight(context, 20)),
+                  SizedBox(
+                      height:
+                          SizeConverter.getHeightPercentage(context, 0.025)),
                   Container(
                     constraints: BoxConstraints(
-                      maxHeight: SizeConverter.getHeight(context, 271),
+                      maxHeight: SizeConverter.getHeightPercentage(
+                          context, 0.33), // 광고 사이즈
                     ),
                     child: const HomeAdvertisement(),
                   ),
-                  SizedBox(height: SizeConverter.getHeight(context, 50)),
+                  SizedBox(
+                      height: SizeConverter.getHeightPercentage(context, 0.06)),
                   Row(
                     children: [
                       Expanded(
@@ -134,21 +139,25 @@ class _HomeViewState extends State<HomeView> {
                               ),
                             ),
                             SizedBox(
-                                height: SizeConverter.getHeight(context, 25)),
+                                height: SizeConverter.getHeightPercentage(
+                                    context, 0.03)),
                             GestureDetector(
                               onTap: _navigateToArtistMain,
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 27.0),
                                 child: SizedBox(
-                                  width: SizeConverter.getWidth(context, 125),
-                                  height: SizeConverter.getHeight(context, 150),
+                                  width: SizeConverter.getWidthPercentage(
+                                      context, 0.3), // UI 0.35
+                                  height: SizeConverter.getHeightPercentage(
+                                      context, 0.18),
                                   child: Container(
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       border: Border.all(
-                                        color: const Color.fromARGB(
-                                            255, 40, 40, 40),
+                                        color: Colors.red,
+                                        // color: const Color.fromARGB(
+                                        //     255, 40, 40, 40),
                                         width: 2,
                                       ),
                                     ),
@@ -158,10 +167,12 @@ class _HomeViewState extends State<HomeView> {
                                               ImageData.getImageUrl(
                                                   ImageId.image_1),
                                               fit: BoxFit.cover,
-                                              width: SizeConverter.getWidth(
-                                                  context, 85),
-                                              height: SizeConverter.getHeight(
-                                                  context, 100),
+                                              width: SizeConverter
+                                                  .getWidthPercentage(
+                                                      context, 0.29),
+                                              height: SizeConverter
+                                                  .getHeightPercentage(
+                                                      context, 0.179),
                                             ),
                                           )
                                         : null,
@@ -170,13 +181,16 @@ class _HomeViewState extends State<HomeView> {
                               ),
                             ),
                             SizedBox(
-                                height: SizeConverter.getHeight(context, 10)),
+                                height: SizeConverter.getHeightPercentage(
+                                    context, 0.012)),
                             Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 29.0),
+                                  const EdgeInsets.symmetric(horizontal: 28.0),
                               child: SizedBox(
-                                width: SizeConverter.getWidth(context, 122),
-                                height: SizeConverter.getHeight(context, 50),
+                                width: SizeConverter.getWidthPercentage(
+                                    context, 0.295),
+                                height: SizeConverter.getHeightPercentage(
+                                    context, 0.061),
                                 child: Container(
                                   child: selectedName.isNotEmpty
                                       ? Center(
@@ -197,7 +211,9 @@ class _HomeViewState extends State<HomeView> {
                       ),
                     ],
                   ),
-                  SizedBox(height: SizeConverter.getHeight(context, 150)),
+                  SizedBox(
+                      height:
+                          SizeConverter.getHeightPercentage(context, 0.182)),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -209,7 +225,9 @@ class _HomeViewState extends State<HomeView> {
                               fontSize: 25, fontWeight: FontWeight.bold),
                         ),
                       ),
-                      SizedBox(height: SizeConverter.getHeight(context, 20)),
+                      SizedBox(
+                          height: SizeConverter.getHeightPercentage(
+                              context, 0.023)),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -234,15 +252,19 @@ class _HomeViewState extends State<HomeView> {
                               ],
                             ),
                           ),
-                          SizedBox(width: SizeConverter.getWidth(context, 10)),
+                          SizedBox(
+                              width: SizeConverter.getWidthPercentage(
+                                  context, 0.092)),
                           GestureDetector(
                             onTap: _navigateToCalendar,
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 6.0, horizontal: 28.0),
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 6.0),
                               child: SizedBox(
-                                width: SizeConverter.getWidth(context, 82),
-                                height: SizeConverter.getHeight(context, 98),
+                                width: SizeConverter.getWidthPercentage(
+                                    context, 0.2),
+                                height: SizeConverter.getHeightPercentage(
+                                    context, 0.12),
                                 child: Image.network(
                                   ImageData.getImageUrl(ImageId.image_2),
                                   fit: BoxFit.cover,
@@ -254,7 +276,12 @@ class _HomeViewState extends State<HomeView> {
                       ),
                     ],
                   ),
-                  SizedBox(height: SizeConverter.getHeight(context, 170)),
+                  SizedBox(
+                      height:
+                          SizeConverter.getHeightPercentage(context, 0.105)),
+                  SizedBox(
+                      height:
+                          SizeConverter.getHeightPercentage(context, 0.102)),
                   Container(
                     constraints: BoxConstraints(
                       maxHeight: SizeConverter.getHeight(context, 800),
