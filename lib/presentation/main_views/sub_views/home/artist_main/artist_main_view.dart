@@ -109,7 +109,7 @@ class _ArtistMainViewState extends State<ArtistMainView> {
                         GestureDetector(
                           onTap: _navigateToArtistProfile,
                           child: Padding(
-                            padding: const EdgeInsets.only(bottom: 20.0), // 가수
+                            padding: const EdgeInsets.only(bottom: 5.0), // 가수
                             child: GestureDetector(
                               child: const Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -167,7 +167,8 @@ class _ArtistMainViewState extends State<ArtistMainView> {
                       ],
                     ),
                   ),
-                  SizedBox(height: SizeConverter.getHeight(context, 8)), // 제목
+                  SizedBox(
+                      height: SizeConverter.getHeightPercentage(context, 0.01)),
                   if (_selectedTab == 'Feed')
                     const Padding(
                       padding: EdgeInsets.only(left: 0.0),
