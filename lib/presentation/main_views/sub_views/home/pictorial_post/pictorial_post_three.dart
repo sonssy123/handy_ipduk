@@ -14,7 +14,6 @@ class _PictorialPostThreeState extends State<PictorialPostThree> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        // backgroundColor: Colors.black,
         body: Stack(
           children: [
             Column(
@@ -33,18 +32,24 @@ class _PictorialPostThreeState extends State<PictorialPostThree> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: SizeConverter.getHeight(context, 13)),
+                        SizedBox(
+                            height: SizeConverter.getHeightPercentage(
+                                context, 0.037)),
                         GestureDetector(
                           child: SizedBox(
-                            width: SizeConverter.getWidth(context, 400),
-                            height: SizeConverter.getHeight(context, 580),
+                            width:
+                                SizeConverter.getWidthPercentage(context, 0.9),
+                            height: SizeConverter.getHeightPercentage(
+                                context, 0.71),
                             child: Image.network(
                               ImageData.getImageUrl(ImageId.image_1),
                               fit: BoxFit.cover,
                             ),
                           ),
                         ),
-                        SizedBox(height: SizeConverter.getHeight(context, 20)),
+                        SizedBox(
+                            height: SizeConverter.getHeightPercentage(
+                                context, 0.025)),
                         const Padding(
                           padding: EdgeInsets.symmetric(horizontal: 12.0),
                           child: Column(

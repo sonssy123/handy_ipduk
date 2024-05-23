@@ -14,7 +14,6 @@ class _PictorialPostOneState extends State<PictorialPostOne> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        // backgroundColor: Colors.black,
         body: Stack(
           children: [
             Column(
@@ -27,7 +26,8 @@ class _PictorialPostOneState extends State<PictorialPostOne> {
                     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                 ),
-                SizedBox(height: SizeConverter.getHeight(context, 30)),
+                SizedBox(
+                    height: SizeConverter.getHeightPercentage(context, 0.037)),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 21.0),
                   child: SizedBox(
@@ -41,18 +41,24 @@ class _PictorialPostOneState extends State<PictorialPostOne> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: SizeConverter.getHeight(context, 13)),
+                        SizedBox(
+                            height: SizeConverter.getHeightPercentage(
+                                context, 0.016)),
                         GestureDetector(
                           child: SizedBox(
-                            width: SizeConverter.getWidth(context, 400),
-                            height: SizeConverter.getHeight(context, 530),
+                            width:
+                                SizeConverter.getWidthPercentage(context, 0.9),
+                            height: SizeConverter.getHeightPercentage(
+                                context, 0.65),
                             child: Image.network(
                               ImageData.getImageUrl(ImageId.image_0),
                               fit: BoxFit.cover,
                             ),
                           ),
                         ),
-                        SizedBox(height: SizeConverter.getHeight(context, 20)),
+                        SizedBox(
+                            height: SizeConverter.getHeightPercentage(
+                                context, 0.025)),
                         const Padding(
                           padding: EdgeInsets.symmetric(horizontal: 12.0),
                           child: Column(
@@ -69,7 +75,7 @@ class _PictorialPostOneState extends State<PictorialPostOne> {
                                 ),
                               ),
                               Text(
-                                '[ 나의 라비앙로즈 ]\n인생을 살면서 어떤 어려움 없이 모두 이루면서 사는\n나의 장밋빛 인생이라는 의미를 가진 작품.',
+                                '[ 나의 라비앙로즈 ]\n인생을 살면서 어떤 어려움 없이 모두 이루면서 사는\n나의 장밋빛 인생을 표현하는 작품.',
                                 style: TextStyle(fontSize: 14),
                               ),
                             ],
