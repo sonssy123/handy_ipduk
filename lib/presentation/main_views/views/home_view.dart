@@ -70,7 +70,7 @@ class _HomeViewState extends State<HomeView> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.black,
         appBar: AppBar(
           title: const Text('IPDUK'),
           centerTitle: true,
@@ -155,9 +155,8 @@ class _HomeViewState extends State<HomeView> {
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       border: Border.all(
-                                        color: Colors.red,
-                                        // color: const Color.fromARGB(
-                                        //     255, 40, 40, 40),
+                                        color: const Color.fromARGB(
+                                            255, 40, 40, 40),
                                         width: 2,
                                       ),
                                     ),
@@ -254,7 +253,7 @@ class _HomeViewState extends State<HomeView> {
                           ),
                           SizedBox(
                               width: SizeConverter.getWidthPercentage(
-                                  context, 0.092)),
+                                  context, 0.055)),
                           GestureDetector(
                             onTap: _navigateToCalendar,
                             child: Padding(
@@ -284,25 +283,30 @@ class _HomeViewState extends State<HomeView> {
                           SizeConverter.getHeightPercentage(context, 0.102)),
                   Container(
                     constraints: BoxConstraints(
-                      maxHeight: SizeConverter.getHeight(context, 800),
-                    ),
+                        maxHeight:
+                            SizeConverter.getHeightPercentage(context, 0.99)),
                     child: const PictorialPostOne(),
                   ),
-                  SizedBox(height: SizeConverter.getHeight(context, 170)),
+                  SizedBox(
+                      height:
+                          SizeConverter.getHeightPercentage(context, 0.207)),
                   Container(
                     constraints: BoxConstraints(
-                      maxHeight: SizeConverter.getHeight(context, 800),
-                    ),
+                        maxHeight:
+                            SizeConverter.getHeightPercentage(context, 0.99)),
                     child: const PictorialPostTwo(),
                   ),
-                  SizedBox(height: SizeConverter.getHeight(context, 170)),
+                  SizedBox(
+                      height:
+                          SizeConverter.getHeightPercentage(context, 0.207)),
                   Container(
                     constraints: BoxConstraints(
-                      maxHeight: SizeConverter.getHeight(context, 800),
-                    ),
+                        maxHeight:
+                            SizeConverter.getHeightPercentage(context, 0.99)),
                     child: const PictorialPostThree(),
                   ),
-                  SizedBox(height: SizeConverter.getHeight(context, 10)),
+                  SizedBox(
+                      height: SizeConverter.getHeightPercentage(context, 0.01)),
                 ],
               ),
             ),

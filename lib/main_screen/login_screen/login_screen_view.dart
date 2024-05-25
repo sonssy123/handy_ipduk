@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:handy_ipduk/main_screen/common_notifier/user_store_notifier.dart';
+import 'package:handy_ipduk/domain/providers/user_store_notifier.dart';
 import 'package:handy_ipduk/main_screen/tab_screen/tab_screen_view.dart';
 import 'package:handy_ipduk/presentation/extenstions/color_extension.dart';
 import 'package:handy_ipduk/presentation/utils/size_converter.dart';
