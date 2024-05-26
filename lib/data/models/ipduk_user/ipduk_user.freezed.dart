@@ -24,8 +24,8 @@ mixin _$IpdukUser {
   String get email => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get nation => throw _privateConstructorUsedError;
-  @JsonKey(name: 'profile_image_url')
-  String get profileImageUrl => throw _privateConstructorUsedError;
+  String get imageUrl => throw _privateConstructorUsedError;
+  List<String> get subscribe => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +43,8 @@ abstract class $IpdukUserCopyWith<$Res> {
       String email,
       String name,
       String nation,
-      @JsonKey(name: 'profile_image_url') String profileImageUrl});
+      String imageUrl,
+      List<String> subscribe});
 }
 
 /// @nodoc
@@ -63,7 +64,8 @@ class _$IpdukUserCopyWithImpl<$Res, $Val extends IpdukUser>
     Object? email = null,
     Object? name = null,
     Object? nation = null,
-    Object? profileImageUrl = null,
+    Object? imageUrl = null,
+    Object? subscribe = null,
   }) {
     return _then(_value.copyWith(
       uid: null == uid
@@ -82,10 +84,14 @@ class _$IpdukUserCopyWithImpl<$Res, $Val extends IpdukUser>
           ? _value.nation
           : nation // ignore: cast_nullable_to_non_nullable
               as String,
-      profileImageUrl: null == profileImageUrl
-          ? _value.profileImageUrl
-          : profileImageUrl // ignore: cast_nullable_to_non_nullable
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      subscribe: null == subscribe
+          ? _value.subscribe
+          : subscribe // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -103,7 +109,8 @@ abstract class _$$IpdukUserImplCopyWith<$Res>
       String email,
       String name,
       String nation,
-      @JsonKey(name: 'profile_image_url') String profileImageUrl});
+      String imageUrl,
+      List<String> subscribe});
 }
 
 /// @nodoc
@@ -121,7 +128,8 @@ class __$$IpdukUserImplCopyWithImpl<$Res>
     Object? email = null,
     Object? name = null,
     Object? nation = null,
-    Object? profileImageUrl = null,
+    Object? imageUrl = null,
+    Object? subscribe = null,
   }) {
     return _then(_$IpdukUserImpl(
       uid: null == uid
@@ -140,10 +148,14 @@ class __$$IpdukUserImplCopyWithImpl<$Res>
           ? _value.nation
           : nation // ignore: cast_nullable_to_non_nullable
               as String,
-      profileImageUrl: null == profileImageUrl
-          ? _value.profileImageUrl
-          : profileImageUrl // ignore: cast_nullable_to_non_nullable
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      subscribe: null == subscribe
+          ? _value._subscribe
+          : subscribe // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -156,7 +168,9 @@ class _$IpdukUserImpl implements _IpdukUser {
       required this.email,
       required this.name,
       required this.nation,
-      @JsonKey(name: 'profile_image_url') required this.profileImageUrl});
+      required this.imageUrl,
+      required final List<String> subscribe})
+      : _subscribe = subscribe;
 
   factory _$IpdukUserImpl.fromJson(Map<String, dynamic> json) =>
       _$$IpdukUserImplFromJson(json);
@@ -170,12 +184,18 @@ class _$IpdukUserImpl implements _IpdukUser {
   @override
   final String nation;
   @override
-  @JsonKey(name: 'profile_image_url')
-  final String profileImageUrl;
+  final String imageUrl;
+  final List<String> _subscribe;
+  @override
+  List<String> get subscribe {
+    if (_subscribe is EqualUnmodifiableListView) return _subscribe;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_subscribe);
+  }
 
   @override
   String toString() {
-    return 'IpdukUser(uid: $uid, email: $email, name: $name, nation: $nation, profileImageUrl: $profileImageUrl)';
+    return 'IpdukUser(uid: $uid, email: $email, name: $name, nation: $nation, imageUrl: $imageUrl, subscribe: $subscribe)';
   }
 
   @override
@@ -187,14 +207,16 @@ class _$IpdukUserImpl implements _IpdukUser {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.nation, nation) || other.nation == nation) &&
-            (identical(other.profileImageUrl, profileImageUrl) ||
-                other.profileImageUrl == profileImageUrl));
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            const DeepCollectionEquality()
+                .equals(other._subscribe, _subscribe));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, uid, email, name, nation, profileImageUrl);
+  int get hashCode => Object.hash(runtimeType, uid, email, name, nation,
+      imageUrl, const DeepCollectionEquality().hash(_subscribe));
 
   @JsonKey(ignore: true)
   @override
@@ -216,8 +238,8 @@ abstract class _IpdukUser implements IpdukUser {
       required final String email,
       required final String name,
       required final String nation,
-      @JsonKey(name: 'profile_image_url')
-      required final String profileImageUrl}) = _$IpdukUserImpl;
+      required final String imageUrl,
+      required final List<String> subscribe}) = _$IpdukUserImpl;
 
   factory _IpdukUser.fromJson(Map<String, dynamic> json) =
       _$IpdukUserImpl.fromJson;
@@ -231,8 +253,9 @@ abstract class _IpdukUser implements IpdukUser {
   @override
   String get nation;
   @override
-  @JsonKey(name: 'profile_image_url')
-  String get profileImageUrl;
+  String get imageUrl;
+  @override
+  List<String> get subscribe;
   @override
   @JsonKey(ignore: true)
   _$$IpdukUserImplCopyWith<_$IpdukUserImpl> get copyWith =>

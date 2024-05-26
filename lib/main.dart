@@ -5,6 +5,7 @@ import 'package:handy_ipduk/firebase_options.dart';
 import 'package:handy_ipduk/main_screen/launch_screen/launch_screen_view.dart';
 import 'package:handy_ipduk/theme_data.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,12 +22,15 @@ class HandyIpduk extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      themeMode: ThemeMode.dark,
-      theme: themeData,
-      darkTheme: darkThemeData,
-      debugShowCheckedModeBanner: false,
-      home: const MainLaunchScreenView(),
+    return ScreenUtilInit(
+      designSize: const Size(411, 820),
+      child: MaterialApp(
+        themeMode: ThemeMode.dark,
+        theme: themeData,
+        darkTheme: darkThemeData,
+        debugShowCheckedModeBanner: false,
+        home: const MainLaunchScreenView(),
+      ),
     );
   }
 }

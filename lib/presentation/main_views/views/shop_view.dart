@@ -4,7 +4,7 @@ import 'package:handy_ipduk/presentation/main_views/sub_views/shop/advertisement
 import 'package:handy_ipduk/presentation/main_views/sub_views/shop/image/shop_button_image.dart';
 import 'package:handy_ipduk/presentation/loading_bar/loading_bar_animation.dart';
 import 'package:handy_ipduk/presentation/main_views/views/calendar_view.dart';
-import 'package:handy_ipduk/presentation/main_views/sub_views/shop/cart/cart_view.dart';
+import 'package:handy_ipduk/presentation/main_views/sub_views/profile/cart/cart_view.dart';
 import 'package:handy_ipduk/presentation/main_views/sub_views/shop/shopping_mall/shopping_mall_view.dart';
 import 'package:handy_ipduk/presentation/utils/size_converter.dart';
 

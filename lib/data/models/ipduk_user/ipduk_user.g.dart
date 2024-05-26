@@ -12,7 +12,9 @@ _$IpdukUserImpl _$$IpdukUserImplFromJson(Map<String, dynamic> json) =>
       email: json['email'] as String,
       name: json['name'] as String,
       nation: json['nation'] as String,
-      profileImageUrl: json['profile_image_url'] as String,
+      imageUrl: json['imageUrl'] as String,
+      subscribe:
+          (json['subscribe'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$$IpdukUserImplToJson(_$IpdukUserImpl instance) =>
@@ -21,5 +23,6 @@ Map<String, dynamic> _$$IpdukUserImplToJson(_$IpdukUserImpl instance) =>
       'email': instance.email,
       'name': instance.name,
       'nation': instance.nation,
-      'profile_image_url': instance.profileImageUrl,
+      'imageUrl': instance.imageUrl,
+      'subscribe': instance.subscribe,
     };

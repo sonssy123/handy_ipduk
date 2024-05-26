@@ -9,7 +9,8 @@ class IpdukUser with _$IpdukUser {
     required String email,
     required String name,
     required String nation,
-    @JsonKey(name: 'profile_image_url') required String profileImageUrl,
+    required String imageUrl,
+    required List<String> subscribe,
   }) = _IpdukUser;
 
   factory IpdukUser.fromJson(Map<String, dynamic> json) =>

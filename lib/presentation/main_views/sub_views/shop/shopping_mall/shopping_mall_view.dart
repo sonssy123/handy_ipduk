@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:handy_ipduk/presentation/main_views/sub_views/shop/cart/cart_view.dart';
+import 'package:handy_ipduk/presentation/main_views/sub_views/profile/cart/cart_view.dart';
 import 'package:handy_ipduk/presentation/main_views/sub_views/shop/product/product_view.dart';
 import 'package:handy_ipduk/presentation/main_views/views/shop_view.dart';
 
