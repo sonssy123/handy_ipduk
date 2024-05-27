@@ -29,7 +29,7 @@ class _MainLaunchScreenViewState extends ConsumerState<MainLaunchScreenView>
     final password = prefs.getString('password') ?? '';
 
     if (email.isEmpty && password.isEmpty) {
-      Timer(const Duration(milliseconds: 5000), () {
+      Timer(const Duration(milliseconds: 4000), () {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => const MainLoginScreenView()),
@@ -42,7 +42,7 @@ class _MainLaunchScreenViewState extends ConsumerState<MainLaunchScreenView>
       email,
       password,
       onSuccess: () {
-        Timer(const Duration(milliseconds: 5000), () {
+        Timer(const Duration(milliseconds: 4000), () {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const MainTabScreenView()),
@@ -50,7 +50,7 @@ class _MainLaunchScreenViewState extends ConsumerState<MainLaunchScreenView>
         });
       },
       onFailure: (error) {
-        Timer(const Duration(milliseconds: 5000), () {
+        Timer(const Duration(milliseconds: 4000), () {
           Navigator.push(
             context,
             MaterialPageRoute(

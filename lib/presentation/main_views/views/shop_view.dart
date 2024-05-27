@@ -50,7 +50,7 @@ class _ShopViewState extends State<ShopView> {
     }
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.amber,
+        // backgroundColor: Colors.amber,
         appBar: AppBar(
           title: const Text('Black Swan'),
           centerTitle: true,
@@ -76,7 +76,7 @@ class _ShopViewState extends State<ShopView> {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         'My Artist',
-                        style: TextStyle(fontSize: 25, color: Colors.white),
+                        style: TextStyle(fontSize: 25),
                       ),
                     ),
                   ),
@@ -92,7 +92,7 @@ class _ShopViewState extends State<ShopView> {
                           height:
                               SizeConverter.getHeight(context, 110), // 사각형 높이
                           decoration: BoxDecoration(
-                            color: Colors.black,
+                            // color: Colors.black,
                             borderRadius: BorderRadius.circular(25),
                             border: Border.all(
                                 color: ColorExtension.accentColor,
@@ -159,7 +159,6 @@ class _ShopViewState extends State<ShopView> {
                                 padding: EdgeInsets.symmetric(horizontal: 20.0),
                                 child: Icon(
                                   Icons.arrow_forward_ios,
-                                  color: Colors.white,
                                 ),
                               ),
                             ],

@@ -46,7 +46,6 @@ class _MainLoginScreenViewState extends ConsumerState<MainLoginScreenView> {
                 const Text(
                   'Login',
                   style: TextStyle(
-                    color: Colors.white,
                     fontSize: 40,
                   ),
                 ),
@@ -56,17 +55,15 @@ class _MainLoginScreenViewState extends ConsumerState<MainLoginScreenView> {
                   padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: TextField(
                     controller: _emailController,
-                    style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       hintText: 'ID를 입력해주세요',
                       hintStyle: const TextStyle(color: Colors.white54),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.white),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.white),
+                        borderSide: const BorderSide(color: Colors.black),
                       ),
                     ),
                   ),
@@ -78,17 +75,15 @@ class _MainLoginScreenViewState extends ConsumerState<MainLoginScreenView> {
                   child: TextField(
                     controller: _passwordController,
                     obscureText: true,
-                    style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       hintText: 'PW를 입력해주세요',
                       hintStyle: const TextStyle(color: Colors.white54),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.white),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.white),
+                        // borderSide: const BorderSide(color: Colors.white),
                       ),
                     ),
                   ),

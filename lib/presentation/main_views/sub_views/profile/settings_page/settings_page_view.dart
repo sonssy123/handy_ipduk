@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
-class SettingsPage extends StatefulWidget {
-  const SettingsPage({super.key});
+class SettingsPageView extends StatefulWidget {
+  const SettingsPageView({super.key});
 
   @override
-  State<SettingsPage> createState() => _SettingsPageState();
+  State<SettingsPageView> createState() => _SettingsPageViewState();
 }
 
-class _SettingsPageState extends State<SettingsPage> {
+class _SettingsPageViewState extends State<SettingsPageView> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('설정 페이지 화면'),
+          title: const Text('설정'),
           centerTitle: true,
-          automaticallyImplyLeading: true,
+          automaticallyImplyLeading: false,
           leading: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 13.0),
             child: IconButton(

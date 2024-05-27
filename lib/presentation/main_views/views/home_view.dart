@@ -70,7 +70,7 @@ class _HomeViewState extends State<HomeView> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.black,
+        // backgroundColor: Colors.black,
         appBar: AppBar(
           title: const Text('IPDUK'),
           centerTitle: true,
@@ -112,7 +112,7 @@ class _HomeViewState extends State<HomeView> {
                                       '나의 아티스트',
                                       style: TextStyle(
                                         fontSize: 25,
-                                        color: Colors.white,
+                                        // color: Colors.white,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -131,7 +131,7 @@ class _HomeViewState extends State<HomeView> {
                                       },
                                       icon: const Icon(
                                         Icons.add,
-                                        color: Colors.white,
+                                        // color: Colors.white,
                                       ),
                                     ),
                                   ),
@@ -317,57 +317,6 @@ class _HomeViewState extends State<HomeView> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class MyArtistButton extends StatelessWidget {
-  const MyArtistButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const MyArtistView()),
-        );
-      },
-      child: const Text('My Artist 화면으로 이동'),
-    );
-  }
-}
-
-class ArtistMainButton extends StatelessWidget {
-  const ArtistMainButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const ArtistMainView()),
-        );
-      },
-      child: const Text('Artist Main 화면으로 이동'),
-    );
-  }
-}
-
-class CalendarButton extends StatelessWidget {
-  const CalendarButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const CalendarView()),
-        );
-      },
-      child: const Text('Calendar 화면으로 이동'),
     );
   }
 }

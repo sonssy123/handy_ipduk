@@ -56,7 +56,7 @@ class _MyArtistViewState extends State<MyArtistView> {
                         },
                         icon: const Icon(
                           Icons.close,
-                          color: Colors.white,
+                          // color: Colors.white,
                         ),
                       ),
                     ),

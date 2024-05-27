@@ -4,11 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:handy_ipduk/domain/providers/user_store_notifier.dart';
 import 'package:handy_ipduk/main_screen/login_screen/login_screen_view.dart';
-import 'package:handy_ipduk/presentation/common/firebase_storage_image_data.dart';
 import 'package:handy_ipduk/presentation/common/profile_image.dart';
 import 'package:handy_ipduk/presentation/extenstions/color_extension.dart';
-import 'package:handy_ipduk/presentation/main_views/sub_views/profile/settings_page/settings_page.dart';
-import 'package:handy_ipduk/presentation/utils/size_converter.dart';
+import 'package:handy_ipduk/presentation/main_views/sub_views/profile/settings_page/settings_page_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,14 +19,41 @@ class ProfileView extends ConsumerStatefulWidget {
 
 class _ProfileViewState extends ConsumerState<ProfileView> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
   final storageRef = FirebaseStorage.instance.ref();
 
-  Future<String?> getImageData(String? imageUrl) async {
-    if (imageUrl == null) {
-      return null;
-    }
+  String? _profileImageUrl;
+  final String _profileImage = '';
 
+  @override
+  void initState() {
+    super.initState();
+    _updateImage();
+  }
+
+  Future<void> _updateImage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final cachedImageUrl = prefs.getString(_profileImage);
+
+    if (cachedImageUrl != null) {
+      setState(() {
+        _profileImageUrl = cachedImageUrl;
+      });
+    } else {
+      final userStore = ref.read(userStoreProvider);
+      final imageUrl = userStore.user?.imageUrl;
+      if (imageUrl != null) {
+        final downloadUrl = await getImageData(imageUrl);
+        if (downloadUrl != null) {
+          setState(() {
+            _profileImageUrl = downloadUrl;
+          });
+          await prefs.setString(_profileImage, downloadUrl);
+        }
+      }
+    }
+  }
+
+  Future<String?> getImageData(String imageUrl) async {
     try {
       final imageRef = storageRef.child("user/$imageUrl");
       final String imgeDownloadURL = await imageRef.getDownloadURL();
@@ -41,19 +66,25 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
   void _settingsPage() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const SettingsPage()),
+      MaterialPageRoute(builder: (context) => const SettingsPageView()),
     );
   }
 
-  // context 수정 / prefs 가 아닌 이메일 패스워드만 clear
   Future<void> _logout() async {
     try {
       await _auth.signOut();
+
       final prefs = await SharedPreferences.getInstance();
-      await prefs.clear();
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const MainLoginScreenView()),
-      );
+
+      await prefs.remove('email');
+      await prefs.remove('password');
+      await prefs.remove(_profileImage);
+
+      if (mounted) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const MainLoginScreenView()),
+        );
+      }
     } catch (e) {
       rethrow;
     }
@@ -64,9 +95,9 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
     final userStore = ref.watch(userStoreProvider);
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.amber,
+        // backgroundColor: const Color.fromARGB(255, 66, 66, 66),
         appBar: AppBar(
-          title: const Text('Proflie 화면'),
+          title: const Text('Profile 화면'),
           centerTitle: true,
           automaticallyImplyLeading: false,
           actions: [
@@ -82,81 +113,60 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
               child: Center(
                 child: Column(
                   children: [
-                    FutureBuilder<String?>(
-                      future: getImageData(userStore.user?.imageUrl),
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          final profile = FirebaseStorageImgaeData.fromJson({
-                            'imageData': snapshot.data,
-                          });
-                          return ProfileImage(
-                            imageUrl: profile.imageData,
-                            width: 200.w,
-                            borderWidth: 2.w,
-                            borderColor: const Color.fromARGB(255, 40, 40, 40),
-                          );
-                        } else {
-                          return const Center(
-                            child: Text('데이터가 없습니다'),
-                          );
-                        }
-                      },
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: _profileImageUrl != null
+                          ? ProfileImage(
+                              imageUrl: _profileImageUrl!,
+                              width: 200.w,
+                              borderWidth: 2.w,
+                              borderColor:
+                                  const Color.fromARGB(255, 40, 40, 40),
+                            )
+                          : const SizedBox.shrink(),
                     ),
-                    SizedBox(height: SizeConverter.getHeight(context, 30)),
                     Container(
-                      width: SizeConverter.getWidth(context, 350),
-                      height: SizeConverter.getHeight(context, 200),
+                      width: 200.w,
+                      height: 50.h,
                       decoration: BoxDecoration(
                         border: Border.all(
                             color: const Color.fromARGB(255, 40, 40, 40)),
                       ),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 2.0),
-                            child: Text(
-                              userStore.user?.email ?? 'No Email',
-                              style: const TextStyle(
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 2.0),
-                            child: Text(
-                              userStore.user?.name ?? 'No Name',
-                              style: const TextStyle(
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 2.0),
-                            child: Text(
-                              userStore.user?.nation ?? 'No Nation',
-                              style: const TextStyle(
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                              ),
+                          Text(
+                            userStore.user?.name ?? 'No Name',
+                            style: const TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: IconButton(
-                        icon: const Icon(Icons.person),
-                        color: ColorExtension.accentColor,
-                        iconSize: 30,
-                        onPressed: _settingsPage,
+                    SizedBox(height: 50.h),
+                    Container(
+                      width: 350.w,
+                      height: 60.h,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                            color: const Color.fromARGB(255, 40, 40, 40)),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10.0),
+                            child: IconButton(
+                              icon: const Icon(Icons.settings),
+                              color: ColorExtension.accentColor,
+                              iconSize: 30,
+                              onPressed: _settingsPage,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
