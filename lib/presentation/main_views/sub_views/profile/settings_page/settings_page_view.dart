@@ -1,13 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:handy_ipduk/screen_theme_data.dart';
+import 'package:handy_ipduk/settings_store.dart';
 
-class SettingsPageView extends StatefulWidget {
+class SettingsPageView extends ConsumerStatefulWidget {
   const SettingsPageView({super.key});
 
   @override
-  State<SettingsPageView> createState() => _SettingsPageViewState();
+  ConsumerState<SettingsPageView> createState() => _SettingsPageViewState();
 }
 
-class _SettingsPageViewState extends State<SettingsPageView> {
+class _SettingsPageViewState extends ConsumerState<SettingsPageView> {
+  bool isSelectTheme = false;
+
+  @override
+  void initState() {
+    super.initState();
+    isSelectTheme = ref.read(settingsStoreProvider).themeData ==
+        ScreenThemedata().darkThemeData;
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -30,7 +42,25 @@ class _SettingsPageViewState extends State<SettingsPageView> {
           children: [
             SingleChildScrollView(
               child: Column(
-                children: [],
+                children: [
+                  ListTile(
+                    title: const Text(
+                      '테마',
+                      style: TextStyle(fontSize: 30),
+                    ),
+                    trailing: Switch(
+                      value: isSelectTheme,
+                      onChanged: (value) async {
+                        setState(() {
+                          isSelectTheme = value;
+                        });
+                        await ref
+                            .read(settingsStoreProvider.notifier)
+                            .toggleTheme(value);
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

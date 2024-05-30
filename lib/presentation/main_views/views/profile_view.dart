@@ -7,6 +7,7 @@ import 'package:handy_ipduk/main_screen/login_screen/login_screen_view.dart';
 import 'package:handy_ipduk/presentation/common/profile_image.dart';
 import 'package:handy_ipduk/presentation/extenstions/color_extension.dart';
 import 'package:handy_ipduk/presentation/main_views/sub_views/profile/settings_page/settings_page_view.dart';
+import 'package:handy_ipduk/settings_store.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -80,6 +81,8 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
       await prefs.remove('password');
       await prefs.remove(_profileImage);
 
+      await ref.read(settingsStoreProvider.notifier).logout();
+
       if (mounted) {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => const MainLoginScreenView()),
@@ -95,7 +98,6 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
     final userStore = ref.watch(userStoreProvider);
     return SafeArea(
       child: Scaffold(
-        // backgroundColor: const Color.fromARGB(255, 66, 66, 66),
         appBar: AppBar(
           title: const Text('Profile 화면'),
           centerTitle: true,
@@ -145,28 +147,44 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                       ),
                     ),
                     SizedBox(height: 50.h),
-                    Container(
-                      width: 350.w,
-                      height: 60.h,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                            color: const Color.fromARGB(255, 40, 40, 40)),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 10.0),
-                            child: IconButton(
-                              icon: const Icon(Icons.settings),
-                              color: ColorExtension.accentColor,
-                              iconSize: 30,
-                              onPressed: _settingsPage,
+                    GestureDetector(
+                      onTap: _settingsPage,
+                      child: Container(
+                        width: 350.w,
+                        height: 70.h,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: const Color.fromARGB(255, 40, 40, 40)),
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 15.0),
+                              child: Icon(
+                                Icons.settings,
+                                color: ColorExtension.accentColor,
+                                size: 30,
+                              ),
                             ),
-                          ),
-                        ],
+                            const Text(
+                              '설정',
+                              style: TextStyle(
+                                fontSize: 23.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const Spacer(),
+                            const Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 15.0),
+                              child: Icon(
+                                Icons.arrow_forward_ios,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
