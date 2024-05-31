@@ -27,7 +27,7 @@ class SettingsStore extends ChangeNotifier {
 
   Future<void> _loadThemeData(User user) async {
     DocumentSnapshot userDoc =
-        await _firestore.collection('users').doc(user.uid).get();
+        await _firestore.collection('tb_user').doc(user.uid).get();
     if (userDoc.exists && userDoc.data() != null) {
       var data = userDoc.data() as Map<String, dynamic>;
       bool isSelectTheme = data['isSelectTheme'] ?? false;
@@ -51,7 +51,7 @@ class SettingsStore extends ChangeNotifier {
   Future<void> _saveThemeData(bool isSelectTheme) async {
     User? user = _auth.currentUser;
     if (user != null) {
-      await _firestore.collection('users').doc(user.uid).set({
+      await _firestore.collection('tb_user').doc(user.uid).set({
         'isSelectTheme': isSelectTheme,
       }, SetOptions(merge: true));
     }

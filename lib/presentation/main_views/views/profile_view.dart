@@ -6,8 +6,9 @@ import 'package:handy_ipduk/domain/providers/user_store_notifier.dart';
 import 'package:handy_ipduk/main_screen/login_screen/login_screen_view.dart';
 import 'package:handy_ipduk/presentation/common/profile_image.dart';
 import 'package:handy_ipduk/presentation/extenstions/color_extension.dart';
+import 'package:handy_ipduk/presentation/main_views/sub_views/profile/cart/cart_view.dart';
 import 'package:handy_ipduk/presentation/main_views/sub_views/profile/settings_page/settings_page_view.dart';
-import 'package:handy_ipduk/settings_store.dart';
+import 'package:handy_ipduk/domain/providers/settings_store.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -68,6 +69,13 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => const SettingsPageView()),
+    );
+  }
+
+  void _cartview() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const CartView()),
     );
   }
 
@@ -146,12 +154,12 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 50.h),
+                    SizedBox(height: 60.h),
                     GestureDetector(
                       onTap: _settingsPage,
                       child: Container(
                         width: 350.w,
-                        height: 70.h,
+                        height: 60.h,
                         decoration: BoxDecoration(
                           border: Border.all(
                               color: const Color.fromARGB(255, 40, 40, 40)),
@@ -166,13 +174,13 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                               child: Icon(
                                 Icons.settings,
                                 color: ColorExtension.accentColor,
-                                size: 30,
+                                size: 25,
                               ),
                             ),
                             const Text(
                               '설정',
                               style: TextStyle(
-                                fontSize: 23.0,
+                                fontSize: 20.0,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -181,6 +189,49 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                               padding: EdgeInsets.symmetric(horizontal: 15.0),
                               child: Icon(
                                 Icons.arrow_forward_ios,
+                                size: 22,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 15.h),
+                    GestureDetector(
+                      onTap: _cartview,
+                      child: Container(
+                        width: 350.w,
+                        height: 60.h,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: const Color.fromARGB(255, 40, 40, 40)),
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 15.0),
+                              child: Icon(
+                                Icons.shopping_cart,
+                                color: ColorExtension.accentColor,
+                                size: 25,
+                              ),
+                            ),
+                            const Text(
+                              '장바구니',
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const Spacer(),
+                            const Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 15.0),
+                              child: Icon(
+                                Icons.arrow_forward_ios,
+                                size: 22,
                               ),
                             ),
                           ],
