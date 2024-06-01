@@ -16,6 +16,17 @@ class _CartViewState extends State<CartView> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Cart 화면'),
+          centerTitle: true,
+          automaticallyImplyLeading: false,
+          leading: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 13.0),
+            child: IconButton(
+              icon: const Icon(Icons.arrow_back_ios),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ),
         ),
         body: Stack(
           children: [

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:handy_ipduk/screen_theme_data.dart';
-import 'package:handy_ipduk/settings_store.dart';
+import 'package:handy_ipduk/domain/providers/settings_store.dart';
 
 class SettingsPageView extends ConsumerStatefulWidget {
   const SettingsPageView({super.key});
