@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:handy_ipduk/main_screen/launch_screen/animated_word.dart';
 import 'package:handy_ipduk/main_screen/login_screen/login_screen_view.dart';
-import 'package:handy_ipduk/domain/providers/user_store_notifier.dart';
+import 'package:handy_ipduk/domain/providers/user_store.dart';
 import 'package:handy_ipduk/main_screen/tab_screen/tab_screen_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
