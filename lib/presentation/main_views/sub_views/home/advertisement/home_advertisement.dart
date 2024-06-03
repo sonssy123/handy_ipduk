@@ -49,7 +49,7 @@ class _HomeAdvertisementState extends State<HomeAdvertisement>
     return SafeArea(
       child: Scaffold(
         body: SizedBox(
-          height: SizeConverter.getHeightPercentage(context, 0.329), // 전체 사이즈
+          height: SizeConverter.getHeightPercentage(context, 0.300), // 전체 사이즈
           child: PageView.builder(
             controller: _pageController,
             onPageChanged: (int index) {
@@ -75,7 +75,7 @@ class _HomeAdvertisementState extends State<HomeAdvertisement>
                     ),
                   ),
                   Positioned(
-                    top: 186.0, // 수직 위치
+                    top: 166.0, // 수직 위치
                     left: 20.0, // 수평 위치
                     child: Text(
                       "${pageIndex + 1}/${ImageId.values.length}",
