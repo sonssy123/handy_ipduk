@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:handy_ipduk/firebase_options.dart';
 import 'package:handy_ipduk/main_screen/launch_screen/launch_screen_view.dart';
+import 'package:handy_ipduk/test_select.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:handy_ipduk/screen_theme_data.dart';
-import 'package:handy_ipduk/settings_store.dart';
+import 'package:handy_ipduk/domain/providers/settings_store.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,7 +34,7 @@ class HandyIpduk extends ConsumerWidget {
         theme: ScreenThemedata().themeData,
         darkTheme: ScreenThemedata().darkThemeData,
         debugShowCheckedModeBanner: false,
-        home: const MainLaunchScreenView(),
+        home: const TestSelect(),
       ),
     );
   }
