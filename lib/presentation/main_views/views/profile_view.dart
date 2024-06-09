@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:handy_ipduk/domain/providers/user_store_notifier.dart';
+import 'package:handy_ipduk/domain/providers/user_store.dart';
 import 'package:handy_ipduk/main_screen/login_screen/login_screen_view.dart';
 import 'package:handy_ipduk/presentation/common/profile_image.dart';
 import 'package:handy_ipduk/presentation/extenstions/color_extension.dart';
