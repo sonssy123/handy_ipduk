@@ -90,6 +90,26 @@ class _TestSelectState extends ConsumerState<TestSelect> {
                         )
                       : const SizedBox.shrink(),
                 ),
+                Column(
+                  children: artistStore.artist.map((artist) {
+                    return ProfileImage(
+                      imageUrl: artist.logoImageUrl,
+                      width: 80,
+                      borderWidth: 2,
+                      borderColor: Colors.blue,
+                    );
+                  }).toList(),
+                ),
+                // Column(
+                //   children: artistStore.artist.map((artist) {
+                //     return ProfileImage(
+                //       imageUrl: getImageData(artist.logoImageUrl),
+                //       width: 80,
+                //       borderWidth: 2,
+                //       borderColor: Colors.blue,
+                //     );
+                //   }).toList(),
+                // ),
                 Container(
                   width: 200.w,
                   height: 100.h,
