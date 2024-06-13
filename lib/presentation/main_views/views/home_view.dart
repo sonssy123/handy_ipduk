@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:handy_ipduk/presentation/main_views/sub_views/home/advertisement/home_advertisement.dart';
 import 'package:handy_ipduk/presentation/main_views/sub_views/home/image/home_artist_output_screen_image.dart';
-import 'package:handy_ipduk/presentation/main_views/sub_views/home/pictorial_post/pictorial_post_one.dart';
-import 'package:handy_ipduk/presentation/main_views/sub_views/home/pictorial_post/pictorial_post_three.dart';
-import 'package:handy_ipduk/presentation/main_views/sub_views/home/pictorial_post/pictorial_post_two.dart';
 import 'package:handy_ipduk/presentation/loading_bar/loading_bar_animation.dart';
 import 'package:handy_ipduk/presentation/main_views/views/calendar_view.dart';
 import 'package:handy_ipduk/presentation/main_views/sub_views/home/artist_main/artist_main_view.dart';
@@ -70,7 +68,6 @@ class _HomeViewState extends State<HomeView> {
 
     return SafeArea(
       child: Scaffold(
-        // backgroundColor: Colors.black,
         appBar: AppBar(
           title: const Text('IPDUK'),
           centerTitle: true,
@@ -81,18 +78,14 @@ class _HomeViewState extends State<HomeView> {
             SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(
-                      height:
-                          SizeConverter.getHeightPercentage(context, 0.025)),
+                  SizedBox(height: 20.h),
                   Container(
                     constraints: BoxConstraints(
-                      maxHeight: SizeConverter.getHeightPercentage(
-                          context, 0.33), // 광고 사이즈
+                      maxHeight: 247.h, // 광고 사이즈
                     ),
                     child: const HomeAdvertisement(),
                   ),
-                  SizedBox(
-                      height: SizeConverter.getHeightPercentage(context, 0.06)),
+                  SizedBox(height: 20.h),
                   Row(
                     children: [
                       Expanded(
@@ -111,8 +104,7 @@ class _HomeViewState extends State<HomeView> {
                                     child: Text(
                                       '나의 아티스트',
                                       style: TextStyle(
-                                        fontSize: 25,
-                                        // color: Colors.white,
+                                        fontSize: 20,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -131,16 +123,13 @@ class _HomeViewState extends State<HomeView> {
                                       },
                                       icon: const Icon(
                                         Icons.add,
-                                        // color: Colors.white,
                                       ),
                                     ),
                                   ),
                                 ],
                               ),
                             ),
-                            SizedBox(
-                                height: SizeConverter.getHeightPercentage(
-                                    context, 0.03)),
+                            SizedBox(height: 10.h),
                             GestureDetector(
                               onTap: _navigateToArtistMain,
                               child: Padding(
@@ -148,9 +137,9 @@ class _HomeViewState extends State<HomeView> {
                                     horizontal: 27.0),
                                 child: SizedBox(
                                   width: SizeConverter.getWidthPercentage(
-                                      context, 0.3), // UI 0.35
+                                      context, 0.25),
                                   height: SizeConverter.getHeightPercentage(
-                                      context, 0.18),
+                                      context, 0.15),
                                   child: Container(
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
@@ -184,7 +173,7 @@ class _HomeViewState extends State<HomeView> {
                                     context, 0.012)),
                             Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 28.0),
+                                  const EdgeInsets.symmetric(horizontal: 20.0),
                               child: SizedBox(
                                 width: SizeConverter.getWidthPercentage(
                                     context, 0.295),
@@ -210,9 +199,7 @@ class _HomeViewState extends State<HomeView> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                      height:
-                          SizeConverter.getHeightPercentage(context, 0.182)),
+                  SizedBox(height: 70.h),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -221,12 +208,10 @@ class _HomeViewState extends State<HomeView> {
                         child: Text(
                           'Schedule',
                           style: TextStyle(
-                              fontSize: 25, fontWeight: FontWeight.bold),
+                              fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                       ),
-                      SizedBox(
-                          height: SizeConverter.getHeightPercentage(
-                              context, 0.023)),
+                      SizedBox(height: 20.h),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -240,7 +225,7 @@ class _HomeViewState extends State<HomeView> {
                                   child: Text(
                                     '내 일정 확인하기',
                                     style: TextStyle(
-                                        fontSize: 18,
+                                        fontSize: 16,
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
@@ -251,19 +236,15 @@ class _HomeViewState extends State<HomeView> {
                               ],
                             ),
                           ),
-                          SizedBox(
-                              width: SizeConverter.getWidthPercentage(
-                                  context, 0.055)),
+                          SizedBox(width: 20.w),
                           GestureDetector(
                             onTap: _navigateToCalendar,
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(vertical: 6.0),
                               child: SizedBox(
-                                width: SizeConverter.getWidthPercentage(
-                                    context, 0.2),
-                                height: SizeConverter.getHeightPercentage(
-                                    context, 0.12),
+                                width: 90.w,
+                                height: 90.h,
                                 child: Image.network(
                                   ImageData.getImageUrl(ImageId.image_2),
                                   fit: BoxFit.cover,
@@ -275,38 +256,7 @@ class _HomeViewState extends State<HomeView> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                      height:
-                          SizeConverter.getHeightPercentage(context, 0.105)),
-                  SizedBox(
-                      height:
-                          SizeConverter.getHeightPercentage(context, 0.102)),
-                  Container(
-                    constraints: BoxConstraints(
-                        maxHeight:
-                            SizeConverter.getHeightPercentage(context, 0.99)),
-                    child: const PictorialPostOne(),
-                  ),
-                  SizedBox(
-                      height:
-                          SizeConverter.getHeightPercentage(context, 0.207)),
-                  Container(
-                    constraints: BoxConstraints(
-                        maxHeight:
-                            SizeConverter.getHeightPercentage(context, 0.99)),
-                    child: const PictorialPostTwo(),
-                  ),
-                  SizedBox(
-                      height:
-                          SizeConverter.getHeightPercentage(context, 0.207)),
-                  Container(
-                    constraints: BoxConstraints(
-                        maxHeight:
-                            SizeConverter.getHeightPercentage(context, 0.99)),
-                    child: const PictorialPostThree(),
-                  ),
-                  SizedBox(
-                      height: SizeConverter.getHeightPercentage(context, 0.01)),
+                  SizedBox(height: 30.h),
                 ],
               ),
             ),
