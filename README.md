@@ -49,10 +49,7 @@ Flutter, Dart, Firebase Authentication, Firebase Storage, FireStore를 활용해
 - OCR : 
 - 아이디어 작성 : 
 
-
-
-
-# 프로젝트 아키텍쳐
-
+# 프로젝트 아키텍처
+- 클린 아키텍처
 
 # 주요 기능
