@@ -47,7 +47,7 @@ Flutter, Dart, Firebase Authentication, Firebase Storage, FireStore를 활용해
 ![alt text](189ed0fe43d581b7d.gif)
 
 # 주요 기능
-- 아티스트 정보 및 유저 정보 제공
+- 아티스트 정보 제공
   - 유저가 선호하는 아티스트를 선택한다.
   - 선택된 아티스트의 로고 이미지가 즐겨찾기에 등록되면서 로고 이미지를 터치하면 해당 아티스트의 정보를 제공해준다.
 
@@ -56,5 +56,8 @@ Flutter, Dart, Firebase Authentication, Firebase Storage, FireStore를 활용해
 
 - 아티스트 일정 제공
   - 캘린더에서 선호하는 아티스트의 콘서트와 팬 싸인회 등 이벤트 일정 정보를 제공하며, 이벤트 참여 신청이 가능하고, 유저가 신청한 이벤트 신청내역 정보 확인이 가능하다.
+
+- 유저 정보 제공
+  - 유저 정보를 제공하면서 선택된 선호하는 아티스트 정보, 이벤트 신청 내역, 굿즈 상품 구매 내역, 장바구니 정보를 저장한다. 
 
   ![alt text](edd210b5476d0c1aa88ea7efcc6a837bd6349b29.gif)
