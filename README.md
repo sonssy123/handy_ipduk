@@ -60,4 +60,7 @@ Flutter, Dart, Firebase Authentication, Firebase Storage, FireStore를 활용해
 - 유저 정보 제공
   - 유저 정보를 제공하면서 선택된 선호하는 아티스트 정보, 이벤트 신청 내역, 굿즈 상품 구매 내역, 장바구니 정보를 저장한다. 
 
+- 테마 변경
+  - 설정에서 유저가 원하는 테마로 변경할 수 있다.
+
   ![alt text](edd210b5476d0c1aa88ea7efcc6a837bd6349b29.gif)
